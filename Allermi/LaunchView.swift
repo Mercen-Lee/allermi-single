@@ -39,6 +39,7 @@ struct LaunchView: View {
                                     .fontWeight(.bold)
                                     .font(.title3)
                                     .foregroundColor(.white)
+                                    .transition(.scale)
                                     .onAppear {
                                         updateAnimationStatus(time: 0.1)
                                     }
@@ -52,6 +53,7 @@ struct LaunchView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 270)
+                        .transition(.scale)
                         .onAppear {
                             updateAnimationStatus(time: 1)
                         }
@@ -62,11 +64,5 @@ struct LaunchView: View {
             .ignoresSafeArea()
             .transition(.backslide)
         }
-    }
-}
-
-struct LaunchView_Previews: PreviewProvider {
-    static var previews: some View {
-        LaunchView()
     }
 }

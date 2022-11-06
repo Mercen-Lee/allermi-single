@@ -41,7 +41,7 @@ func csvDownload() {
         switch response.result {
         case .success:
             let decodedString: String = decodeString(response.data!)
-            print(csvParse(decodedString))
+            print(csvParse(decodedString)[0])
         case .failure(let error):
             print("통신 오류!\nCode:\(error._code), Message: \(error.errorDescription!)")
         }

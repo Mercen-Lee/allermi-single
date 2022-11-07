@@ -12,10 +12,13 @@
 		93725BA72916D8230008BC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93725BA62916D8230008BC79 /* Assets.xcassets */; };
 		93725BB12916D89D0008BC79 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BB02916D89D0008BC79 /* LaunchView.swift */; };
 		93725BB42916D8C70008BC79 /* ViewPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BB32916D8C70008BC79 /* ViewPreset.swift */; };
-		93725BB72916D9610008BC79 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BB62916D9610008BC79 /* MainViewController.swift */; };
 		93725BBA2916D97E0008BC79 /* AllergyBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BB92916D97E0008BC79 /* AllergyBase.swift */; };
 		93725BBC2916D9870008BC79 /* AllergyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BBB2916D9870008BC79 /* AllergyData.swift */; };
 		93725BBF2916D9A40008BC79 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 93725BBE2916D9A40008BC79 /* Alamofire */; };
+		93B33D732917E4B20041904B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B33D722917E4B20041904B /* SearchView.swift */; };
+		93B33D762917E6100041904B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B33D752917E6100041904B /* RegisterView.swift */; };
+		93B33D79291877550041904B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D78291877550041904B /* RealmSwift */; };
+		93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D7B2918C9950041904B /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +28,10 @@
 		93725BA62916D8230008BC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93725BB02916D89D0008BC79 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		93725BB32916D8C70008BC79 /* ViewPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPreset.swift; sourceTree = "<group>"; };
-		93725BB62916D9610008BC79 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		93725BB92916D97E0008BC79 /* AllergyBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyBase.swift; sourceTree = "<group>"; };
 		93725BBB2916D9870008BC79 /* AllergyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyData.swift; sourceTree = "<group>"; };
+		93B33D722917E4B20041904B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		93B33D752917E6100041904B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +39,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93B33D79291877550041904B /* RealmSwift in Frameworks */,
 				93725BBF2916D9A40008BC79 /* Alamofire in Frameworks */,
+				93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +70,9 @@
 				93725BA22916D8220008BC79 /* AllermiApp.swift */,
 				93725BB02916D89D0008BC79 /* LaunchView.swift */,
 				93725BB22916D8B90008BC79 /* Presets */,
+				93B33D742917E5FA0041904B /* RegisterView */,
 				93725BB52916D9480008BC79 /* MainViews */,
+				93B33D712917E4A80041904B /* SearchViews */,
 				93725BB82916D9740008BC79 /* Allergy */,
 				93725BA62916D8230008BC79 /* Assets.xcassets */,
 				93725BA82916D8230008BC79 /* Preview Content */,
@@ -91,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				93725BA42916D8220008BC79 /* MainView.swift */,
-				93725BB62916D9610008BC79 /* MainViewController.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -103,6 +110,22 @@
 				93725BBB2916D9870008BC79 /* AllergyData.swift */,
 			);
 			path = Allergy;
+			sourceTree = "<group>";
+		};
+		93B33D712917E4A80041904B /* SearchViews */ = {
+			isa = PBXGroup;
+			children = (
+				93B33D722917E4B20041904B /* SearchView.swift */,
+			);
+			path = SearchViews;
+			sourceTree = "<group>";
+		};
+		93B33D742917E5FA0041904B /* RegisterView */ = {
+			isa = PBXGroup;
+			children = (
+				93B33D752917E6100041904B /* RegisterView.swift */,
+			);
+			path = RegisterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +146,8 @@
 			name = Allermi;
 			packageProductDependencies = (
 				93725BBE2916D9A40008BC79 /* Alamofire */,
+				93B33D78291877550041904B /* RealmSwift */,
+				93B33D7B2918C9950041904B /* SwiftSoup */,
 			);
 			productName = Allermi;
 			productReference = 93725B9F2916D8220008BC79 /* Allermi.app */;
@@ -154,6 +179,8 @@
 			mainGroup = 93725B962916D8220008BC79;
 			packageReferences = (
 				93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				93B33D77291877550041904B /* XCRemoteSwiftPackageReference "realm-swift" */,
+				93B33D7A2918C9950041904B /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 93725BA02916D8220008BC79 /* Products */;
 			projectDirPath = "";
@@ -180,12 +207,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93B33D762917E6100041904B /* RegisterView.swift in Sources */,
 				93725BA52916D8220008BC79 /* MainView.swift in Sources */,
 				93725BB42916D8C70008BC79 /* ViewPreset.swift in Sources */,
 				93725BBC2916D9870008BC79 /* AllergyData.swift in Sources */,
 				93725BB12916D89D0008BC79 /* LaunchView.swift in Sources */,
+				93B33D732917E4B20041904B /* SearchView.swift in Sources */,
 				93725BA32916D8220008BC79 /* AllermiApp.swift in Sources */,
-				93725BB72916D9610008BC79 /* MainViewController.swift in Sources */,
 				93725BBA2916D97E0008BC79 /* AllergyBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +429,22 @@
 				kind = branch;
 			};
 		};
+		93B33D77291877550041904B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		93B33D7A2918C9950041904B /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -408,6 +452,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		93B33D78291877550041904B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93B33D77291877550041904B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		93B33D7B2918C9950041904B /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93B33D7A2918C9950041904B /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

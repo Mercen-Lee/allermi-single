@@ -201,7 +201,7 @@ struct LaunchView: View {
                                 .background(Color.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
                         }
-                        .padding()
+                        .padding(30)
                     }
                 } else {
                     Spacer()

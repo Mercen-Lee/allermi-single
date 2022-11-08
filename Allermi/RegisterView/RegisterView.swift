@@ -35,18 +35,11 @@ struct RegisterView: View {
         }
         return result
     }
-
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            
-            // MARK: - Title
-            Text("알레르미 시작하기")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.top, 50)
-            
-            // MARK: - Subtitle
-            Text("보유하고 계신 알레르기를 선택해주세요.")
+        
+        
+        ZStack {
             
             // MARK: - Allergy Selection
             ScrollView {
@@ -63,7 +56,7 @@ struct RegisterView: View {
                     }
                     .padding(.bottom, 7)
                 }
-                .padding(.top, 30)
+                .padding(.top, 150)
             }
             
             // MARK: - ScrollView Fader
@@ -77,32 +70,45 @@ struct RegisterView: View {
                                        startPoint: .top,
                                        endPoint: .bottom
                         )
-                        .frame(height: 30)
+                        .frame(height: 50)
                         if idx == 0 {
                             Rectangle().fill(Color.black)
                         }
                     }
                 }
-             )
+                    .padding(.top, 100)
+                    .padding(.bottom, 40)
+            )
             
-            Spacer()
-            
-            // MARK: - Complete Button
-            Button(action: {
-                withAnimation(.default) {
-                    registered.toggle()
-                }
-            }) {
-                Text("완료하기")
-                    .foregroundColor(Color(.systemBackground))
+            VStack(alignment: .leading, spacing: 5) {
+                // MARK: - Title
+                Text("알레르미 시작하기")
+                    .font(.largeTitle)
                     .fontWeight(.bold)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.accentColor)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .padding(.top, 50)
+                
+                // MARK: - Subtitle
+                Text("보유하고 계신 알레르기를 선택해주세요.")
+                
+                Spacer()
+                
+                // MARK: - Complete Button
+                Button(action: {
+                    withAnimation(.default) {
+                        registered.toggle()
+                    }
+                }) {
+                    Text("완료하기")
+                        .foregroundColor(Color(.systemBackground))
+                        .fontWeight(.bold)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                }
             }
         }
-        .padding()
+        .padding(30)
     }
 }
 

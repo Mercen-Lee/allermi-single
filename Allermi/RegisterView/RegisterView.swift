@@ -8,8 +8,10 @@ import WrappingHStack
 // MARK: - Register View
 struct RegisterView: View {
     
+    /// Binding Variables
+    @Binding var registering: Bool
+    
     /// State Variables
-    @State private var registered: Bool = false
     @State private var selectedAllergy: [String] = [String]()
     
     /// Static Variables
@@ -52,7 +54,7 @@ struct RegisterView: View {
         } else if relatedAllergy.contains(value) {
             return .lightColor
         } else {
-            return .gray
+            return .gray.opacity(0.4)
         }
     }
     
@@ -61,9 +63,10 @@ struct RegisterView: View {
         ZStack {
             
             // MARK: - Allergy Selection
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 WrappingHStack(viewList) { value in
                     Button(action: {
+                        touch()
                         var majorAllergy = String()
                         for key in allergyList.keys {
                             if allergyList[key]!.contains(value) || key == value {
@@ -87,6 +90,7 @@ struct RegisterView: View {
                             .background(chooseColor(value))
                             .clipShape(Capsule())
                     }
+                    .scaleButton()
                     .padding(.bottom, 7)
                 }
                 .padding(.top, 150)
@@ -127,8 +131,10 @@ struct RegisterView: View {
                 
                 // MARK: - Complete Button
                 Button(action: {
+                    touch()
                     withAnimation(.default) {
-                        registered.toggle()
+                        UserDefaults.standard.set(selectedAllergy, forKey: "allergy")
+                        registering.toggle()
                     }
                 }) {
                     Text("완료하기")
@@ -139,14 +145,9 @@ struct RegisterView: View {
                         .background(Color.accentColor)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                 }
+                .disabled(selectedAllergy.isEmpty)
             }
         }
         .padding(30)
-    }
-}
-
-struct RegisterView_Previews: PreviewProvider {
-    static var previews: some View {
-        RegisterView()
     }
 }

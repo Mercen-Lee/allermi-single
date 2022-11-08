@@ -16,8 +16,8 @@ struct LaunchView: View {
     @State private var registering: Bool = false
     
     /// Local Variables
-    private var registered: Bool {
-        return UserDefaults.standard.bool(forKey: "registered")
+    private var allergy: [String]? {
+        return UserDefaults.standard.array(forKey: "allergy") as? [String]
     }
     private var version: String? {
         return UserDefaults.standard.string(forKey: "version")
@@ -62,7 +62,7 @@ struct LaunchView: View {
     }
     
     // MARK: - Database Version Checker
-    private func checkDatabase(completion:@escaping (((String) -> Void))) {
+    private func checkDatabase(completion: @escaping (((String) -> Void))) {
         AF.request("https://bigdata.gyeongnam.go.kr/bigdata/collect/view.gn?&apiIdx=501",
                    method: .get
         ) { $0.timeoutInterval = 10 }
@@ -88,6 +88,9 @@ struct LaunchView: View {
     
     // MARK: - Database Downloader
     private func downloadDatabase() {
+        withAnimation(.default) {
+            dataLoadStatus = true
+        }
         AF.request("https://bigdata.gyeongnam.go.kr/index.gn?contentsSid=409&apiIdx=501",
                    method: .get
         ) { $0.timeoutInterval = 10 }
@@ -115,12 +118,13 @@ struct LaunchView: View {
     
     // MARK: - Init Function
     private func initFunction() {
-        checkDatabase() { ver in
-            if ver != version {
-                withAnimation(.default) {
-                    dataLoadStatus = true
+        if version == nil {
+            downloadDatabase()
+        } else {
+            checkDatabase() { ver in
+                if ver != version {
+                    downloadDatabase()
                 }
-                downloadDatabase()
             }
         }
     }
@@ -128,13 +132,16 @@ struct LaunchView: View {
     var body: some View {
         
         // MARK: - View Changer
-        if animationStatus == 6 && !dataLoadStatus && !errorOccurred && registered {
+        if animationStatus == 6 && !dataLoadStatus && !errorOccurred && allergy != nil {
             
             MainView()
+                .zIndex(-2)
             
         } else if registering {
             
-            RegisterView()
+            RegisterView(registering: $registering)
+                .zIndex(-1)
+                .transition(.backslide)
             
         } else {
             VStack(spacing: 5) {
@@ -187,9 +194,10 @@ struct LaunchView: View {
                     }
     
                     // MARK: - Register Button
-                    else if !registered {
+                    else if allergy == nil && version != nil {
                         Spacer()
                         Button(action: {
+                            touch()
                             withAnimation(.default) {
                                 registering.toggle()
                             }
@@ -202,6 +210,8 @@ struct LaunchView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
                         }
                         .padding(30)
+                    } else {
+                        Spacer()
                     }
                 } else {
                     Spacer()

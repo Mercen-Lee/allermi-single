@@ -7,7 +7,7 @@ import SwiftUI
 struct MainView: View {
     
     /// State Variables
-    @State var searchText = ""
+    @State private var searchText = ""
 
     var body: some View {
         VStack(spacing: 30) {

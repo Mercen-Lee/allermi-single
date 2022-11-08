@@ -10,10 +10,10 @@ import SwiftSoup
 struct LaunchView: View {
     
     /// State Variables
-    @State var animationStatus: Int = 0
-    @State var dataLoadStatus: Bool = false
-    @State var errorOccurred: Bool = false
-    @State var registering: Bool = false
+    @State private var animationStatus: Int = 0
+    @State private var dataLoadStatus: Bool = false
+    @State private var errorOccurred: Bool = false
+    @State private var registering: Bool = false
     
     /// Local Variables
     private var registered: Bool {
@@ -77,7 +77,7 @@ struct LaunchView: View {
                     }
                     completion(ver)
                 case .failure:
-                    if registered {
+                    if version != nil {
                         completion(version!)
                     } else {
                         errorOccurred.toggle()
@@ -88,7 +88,6 @@ struct LaunchView: View {
     
     // MARK: - Database Downloader
     private func downloadDatabase() {
-        dataLoadStatus = true
         AF.request("https://bigdata.gyeongnam.go.kr/index.gn?contentsSid=409&apiIdx=501",
                    method: .get
         ) { $0.timeoutInterval = 10 }
@@ -118,6 +117,9 @@ struct LaunchView: View {
     private func initFunction() {
         checkDatabase() { ver in
             if ver != version {
+                withAnimation(.default) {
+                    dataLoadStatus = true
+                }
                 downloadDatabase()
             }
         }

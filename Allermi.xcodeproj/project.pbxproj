@@ -19,6 +19,8 @@
 		93B33D762917E6100041904B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B33D752917E6100041904B /* RegisterView.swift */; };
 		93B33D79291877550041904B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D78291877550041904B /* RealmSwift */; };
 		93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D7B2918C9950041904B /* SwiftSoup */; };
+		93BDD0C8291928FC0080B3C1 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 93BDD0C7291928FC0080B3C1 /* WrappingHStack */; };
+		93BDD0CB2919E98C0080B3C1 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 93BDD0CA2919E98C0080B3C1 /* Collections */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +41,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93BDD0C8291928FC0080B3C1 /* WrappingHStack in Frameworks */,
 				93B33D79291877550041904B /* RealmSwift in Frameworks */,
+				93BDD0CB2919E98C0080B3C1 /* Collections in Frameworks */,
 				93725BBF2916D9A40008BC79 /* Alamofire in Frameworks */,
 				93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */,
 			);
@@ -148,6 +152,8 @@
 				93725BBE2916D9A40008BC79 /* Alamofire */,
 				93B33D78291877550041904B /* RealmSwift */,
 				93B33D7B2918C9950041904B /* SwiftSoup */,
+				93BDD0C7291928FC0080B3C1 /* WrappingHStack */,
+				93BDD0CA2919E98C0080B3C1 /* Collections */,
 			);
 			productName = Allermi;
 			productReference = 93725B9F2916D8220008BC79 /* Allermi.app */;
@@ -181,6 +187,8 @@
 				93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				93B33D77291877550041904B /* XCRemoteSwiftPackageReference "realm-swift" */,
 				93B33D7A2918C9950041904B /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				93BDD0C6291928FC0080B3C1 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				93BDD0C92919E98C0080B3C1 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 93725BA02916D8220008BC79 /* Products */;
 			projectDirPath = "";
@@ -445,6 +453,22 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		93BDD0C6291928FC0080B3C1 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		93BDD0C92919E98C0080B3C1 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -462,6 +486,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 93B33D7A2918C9950041904B /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		93BDD0C7291928FC0080B3C1 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93BDD0C6291928FC0080B3C1 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
+		93BDD0CA2919E98C0080B3C1 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93BDD0C92919E98C0080B3C1 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -10,6 +10,7 @@ struct RegisterView: View {
     
     /// State Variables
     @State private var registered: Bool = false
+    @State private var selectedAllergy: [String] = [String]()
     
     /// Static Variables
     private let allergyList: OrderedDictionary = ["난류": ["달걀", "계란", "메추리알"],
@@ -36,8 +37,26 @@ struct RegisterView: View {
         return result
     }
     
+    private var relatedAllergy: [String] {
+        var result = [String]()
+        for allergy in selectedAllergy {
+            result += allergyList[allergy]!
+        }
+        return result
+    }
+    
+    /// Local Functions
+    private func chooseColor(_ value: String) -> Color {
+        if selectedAllergy.contains(value) {
+            return .accentColor
+        } else if relatedAllergy.contains(value) {
+            return .lightColor
+        } else {
+            return .gray
+        }
+    }
+    
     var body: some View {
-        
         
         ZStack {
             
@@ -45,13 +64,27 @@ struct RegisterView: View {
             ScrollView {
                 WrappingHStack(viewList) { value in
                     Button(action: {
-                        
+                        var majorAllergy = String()
+                        for key in allergyList.keys {
+                            if allergyList[key]!.contains(value) || key == value {
+                                majorAllergy = key
+                            }
+                        }
+                        withAnimation(.default) {
+                            if selectedAllergy.contains(majorAllergy) {
+                                selectedAllergy = selectedAllergy.filter {
+                                    $0 != majorAllergy
+                                }
+                            } else {
+                                selectedAllergy.append(majorAllergy)
+                            }
+                        }
                     }) {
                         Text(value)
                             .foregroundColor(Color(.systemBackground))
                             .padding([.leading, .trailing], 10)
                             .frame(height: 30)
-                            .background(Color.accentColor)
+                            .background(chooseColor(value))
                             .clipShape(Capsule())
                     }
                     .padding(.bottom, 7)

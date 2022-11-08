@@ -11,3 +11,8 @@ extension AnyTransition {
             removal: .move(edge: .leading))
     }
 }
+
+// MARK: - Color Extension
+extension Color {
+    static let lightColor = Color("LightColor")
+}

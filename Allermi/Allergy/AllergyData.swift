@@ -15,3 +15,4 @@ class AllergyData: Object {
     @objc dynamic var metaURL: String = ""
     @objc dynamic var nutrient: String = ""
 }
+

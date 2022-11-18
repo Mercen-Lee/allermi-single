@@ -28,6 +28,8 @@ struct LaunchView: View {
     private func updateAnimationStatus(time: CGFloat) {
         DispatchQueue.main.asyncAfter(
             deadline: .now() + time, execute: {
+                //withAnimation(animationStatus >= 5 ? .default :
+                        //.spring(response: 0.55, dampingFraction: 0.45)) {
                 withAnimation(.default) {
                     animationStatus += 1
                 }
@@ -168,19 +170,18 @@ struct LaunchView: View {
                         }
                 }
                 
-                // MARK: - Logo
                 if animationStatus >= 5 {
+                    // MARK: - Logo
                     Image("WhiteLogo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 270)
                         .transition(.scale)
                         .onAppear {
+                            initFunction()
                             updateAnimationStatus(time: 1)
                         }
-                }
-                
-                if animationStatus >= 5 {
+                    
                     // MARK: - Loading
                     if dataLoadStatus {
                         HStack(spacing: 20) {
@@ -194,7 +195,7 @@ struct LaunchView: View {
                     }
     
                     // MARK: - Register Button
-                    else if allergy == nil && version != nil {
+                    else if allergy == nil && animationStatus == 6{
                         Spacer()
                         Button(action: {
                             touch()
@@ -219,8 +220,8 @@ struct LaunchView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.accentColor.ignoresSafeArea())
-            .onAppear(perform: initFunction)
             .transition(.backslide)
+            .preferredColorScheme(.dark)
             
             // MARK: - 서버 오류 처리
             .alert(isPresented: $errorOccurred) {

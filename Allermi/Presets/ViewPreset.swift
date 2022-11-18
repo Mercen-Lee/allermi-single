@@ -3,6 +3,14 @@
 
 import SwiftUI
 
+// MARK: - View Extension
+extension View {
+    func endTextEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                        to: nil, from: nil, for: nil)
+    }
+}
+
 // MARK: - Transition Extension
 extension AnyTransition {
     static var backslide: AnyTransition {

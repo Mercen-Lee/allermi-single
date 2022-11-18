@@ -41,7 +41,7 @@ struct MainView: View {
                         focusState = editingChanged
                     }, onCommit: {
                         if !searchText.isEmpty {
-                            withAnimation(.default) {
+                            withAnimation(.easeInOut(duration: 0.5)) {
                                 searchState.toggle()
                             }
                         }
@@ -52,7 +52,7 @@ struct MainView: View {
                     /// Erase Button
                     if !searchText.isEmpty || searchState {
                         Button(action: {
-                            withAnimation(.default) {
+                            withAnimation(.easeInOut(duration: 0.5)) {
                                 searchText = String()
                                 if searchState {
                                     searchState.toggle()

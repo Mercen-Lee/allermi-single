@@ -16,6 +16,7 @@
 		93725BBC2916D9870008BC79 /* AllergyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BBB2916D9870008BC79 /* AllergyData.swift */; };
 		93725BBF2916D9A40008BC79 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 93725BBE2916D9A40008BC79 /* Alamofire */; };
 		938501D82927DD1300BDF157 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938501D72927DD1300BDF157 /* SearchView.swift */; };
+		938501DD2927E6D200BDF157 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 938501DC2927E6D200BDF157 /* Kingfisher */; };
 		93B33D762917E6100041904B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B33D752917E6100041904B /* RegisterView.swift */; };
 		93B33D79291877550041904B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D78291877550041904B /* RealmSwift */; };
 		93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D7B2918C9950041904B /* SwiftSoup */; };
@@ -34,6 +35,7 @@
 		93725BB92916D97E0008BC79 /* AllergyBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyBase.swift; sourceTree = "<group>"; };
 		93725BBB2916D9870008BC79 /* AllergyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyData.swift; sourceTree = "<group>"; };
 		938501D72927DD1300BDF157 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		938501DE2927E7B500BDF157 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		93B33D752917E6100041904B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		93E8A90E291A11CA009B3FE0 /* DevicePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePreset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				938501DD2927E6D200BDF157 /* Kingfisher in Frameworks */,
 				93BDD0C8291928FC0080B3C1 /* WrappingHStack in Frameworks */,
 				93B33D79291877550041904B /* RealmSwift in Frameworks */,
 				93BDD0CB2919E98C0080B3C1 /* Collections in Frameworks */,
@@ -73,6 +76,7 @@
 		93725BA12916D8220008BC79 /* Allermi */ = {
 			isa = PBXGroup;
 			children = (
+				938501DE2927E7B500BDF157 /* Info.plist */,
 				93725BA22916D8220008BC79 /* AllermiApp.swift */,
 				93725BB02916D89D0008BC79 /* LaunchView.swift */,
 				93725BB22916D8B90008BC79 /* Presets */,
@@ -157,6 +161,7 @@
 				93B33D7B2918C9950041904B /* SwiftSoup */,
 				93BDD0C7291928FC0080B3C1 /* WrappingHStack */,
 				93BDD0CA2919E98C0080B3C1 /* Collections */,
+				938501DC2927E6D200BDF157 /* Kingfisher */,
 			);
 			productName = Allermi;
 			productReference = 93725B9F2916D8220008BC79 /* Allermi.app */;
@@ -192,6 +197,7 @@
 				93B33D7A2918C9950041904B /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				93BDD0C6291928FC0080B3C1 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 				93BDD0C92919E98C0080B3C1 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				938501DB2927E6D200BDF157 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 93725BA02916D8220008BC79 /* Products */;
 			projectDirPath = "";
@@ -358,6 +364,7 @@
 				DEVELOPMENT_TEAM = 56V747V83R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Allermi/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "알레르미";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -389,6 +396,7 @@
 				DEVELOPMENT_TEAM = 56V747V83R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Allermi/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "알레르미";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -441,6 +449,14 @@
 				kind = branch;
 			};
 		};
+		938501DB2927E6D200BDF157 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		93B33D77291877550041904B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -480,6 +496,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		938501DC2927E6D200BDF157 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 938501DB2927E6D200BDF157 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		93B33D78291877550041904B /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;

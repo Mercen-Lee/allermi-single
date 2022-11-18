@@ -37,6 +37,7 @@
 		93725BBB2916D9870008BC79 /* AllergyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyData.swift; sourceTree = "<group>"; };
 		938501D72927DD1300BDF157 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		938501DE2927E7B500BDF157 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		938501E52928059E00BDF157 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93B33D752917E6100041904B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		93E8A90E291A11CA009B3FE0 /* DevicePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePreset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +63,7 @@
 		93725B962916D8220008BC79 = {
 			isa = PBXGroup;
 			children = (
+				938501E52928059E00BDF157 /* README.md */,
 				93725BA12916D8220008BC79 /* Allermi */,
 				93725BA02916D8220008BC79 /* Products */,
 			);

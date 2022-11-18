@@ -4,6 +4,7 @@
 import SwiftUI
 import RealmSwift
 import Kingfisher
+import MarqueeText
 
 // MARK: - Search View
 struct SearchView: View {
@@ -12,7 +13,7 @@ struct SearchView: View {
     let searchText: String
     
     /// Local Variables
-    var allergyData: [AllergyData] {
+    private var allergyData: [AllergyData] {
         let realm = try! Realm()
         return Array(realm.objects(AllergyData.self)
             .filter("productName CONTAINS %@", "\(searchText)"))
@@ -45,6 +46,7 @@ struct SearchView: View {
                                 }
                                 .retry(maxCount: 3, interval: .seconds(5))
                                 .cancelOnDisappear(true)
+                                .cacheMemoryOnly()
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 70, height: 70)
@@ -52,13 +54,21 @@ struct SearchView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                             
                             /// Allergy Informations
-                            VStack(alignment: .leading) {
-                                Text(data.productName)
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .lineLimit(1)
-                                Text("알레르기 해당 없음")
-                                    .lineLimit(1)
+                            VStack(alignment: .leading, spacing: 0) {
+                                MarqueeText(
+                                     text: data.productName,
+                                     font: UIFont.boldSystemFont(ofSize: 22),
+                                     leftFade: 5,
+                                     rightFade: 5,
+                                     startDelay: 2
+                                )
+                                MarqueeText(
+                                     text: "알레르기 해당 없음",
+                                     font: UIFont.preferredFont(forTextStyle: .body),
+                                     leftFade: 5,
+                                     rightFade: 5,
+                                     startDelay: 2
+                                )
                             }
                             
                             Spacer()
@@ -70,6 +80,7 @@ struct SearchView: View {
                         .padding([.top, .leading, .trailing], 15)
                     }
                 }
+                .padding(.bottom, 15)
             }
         }
     }

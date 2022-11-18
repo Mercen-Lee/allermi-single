@@ -9,9 +9,14 @@ struct MainView: View {
     
     /// State Variables
     @State private var focusState: Bool = false
+    @State private var typedText: String = ""
     @State private var searchText: String = ""
-    @State private var searchState: Bool = false
-
+    
+    /// Local Variables
+    private var searchState: Bool {
+        return !searchText.isEmpty
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             
@@ -37,12 +42,12 @@ struct MainView: View {
                 
                 /// Text Field
                 HStack {
-                    TextField("", text: $searchText, onEditingChanged: { editingChanged in
+                    TextField("", text: $typedText, onEditingChanged: { editingChanged in
                         focusState = editingChanged
                     }, onCommit: {
-                        if !searchText.isEmpty {
-                            withAnimation(.easeInOut(duration: 0.5)) {
-                                searchState.toggle()
+                        if !typedText.isEmpty {
+                            withAnimation(.default) {
+                                searchText = typedText
                             }
                         }
                     })
@@ -52,11 +57,9 @@ struct MainView: View {
                     /// Erase Button
                     if !searchText.isEmpty || searchState {
                         Button(action: {
-                            withAnimation(.easeInOut(duration: 0.5)) {
-                                searchText = String()
-                                if searchState {
-                                    searchState.toggle()
-                                }
+                            withAnimation(.default) {
+                                typedText = ""
+                                searchText = ""
                             }
                         }) {
                             Image(systemName: "xmark.circle.fill")
@@ -74,6 +77,7 @@ struct MainView: View {
             if searchState {
                 SearchView(searchText: searchText)
                     .transition(.move(edge: .bottom))
+                    .ignoresSafeArea(.keyboard)
             }
         }
         .padding(searchState ? 0 : 30)

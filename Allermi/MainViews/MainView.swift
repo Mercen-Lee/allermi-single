@@ -22,6 +22,7 @@ struct MainView: View {
             
             // MARK: - Logo
             if !searchState {
+                Spacer()
                 Image("WhiteLogo")
                     .renderingMode(.template)
                     .resizable()
@@ -40,8 +41,10 @@ struct MainView: View {
                         .foregroundColor(.gray)
                 }
                 
-                /// Text Field
+                /// Text Container
                 HStack {
+                    
+                    /// Text Field
                     TextField("", text: $typedText, onEditingChanged: { editingChanged in
                         focusState = editingChanged
                     }, onCommit: {
@@ -78,6 +81,16 @@ struct MainView: View {
                 SearchView(searchText: searchText)
                     .transition(.move(edge: .bottom))
                     .ignoresSafeArea(.keyboard)
+            } else {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        
+                    }) {
+                        Image(systemName: "gearshape.fill")
+                    }
+                }
             }
         }
         .padding(searchState ? 0 : 30)

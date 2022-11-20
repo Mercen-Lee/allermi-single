@@ -38,7 +38,7 @@ struct MainView: View {
                 ZStack {
                     
                     /// Placeholder
-                    if searchText.isEmpty && !searchState && !focusState {
+                    if typedText.isEmpty && !searchState && !focusState {
                         Text("식품명을 입력해 검색하세요")
                             .foregroundColor(.gray)
                     }
@@ -86,29 +86,41 @@ struct MainView: View {
                     .ignoresSafeArea(.keyboard)
             }
             
-            // MARK: - Settings Button
+            // MARK: - Settings
             else {
                 Spacer()
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        endTextEditing()
-                        withAnimation(.default) {
-                            settings.toggle()
+                ZStack {
+                    if settings {
+                        SelectionView(selection: $settings)
+                            .transition(.move(edge: .bottom))
+                    }
+                    
+                    // MARK: - Settings Button
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                touch()
+                                endTextEditing()
+                                withAnimation(.default) {
+                                    settings.toggle()
+                                }
+                            }) {
+                                Image(systemName: "gearshape.fill")
+                                    .imageScale(.large)
+                                    .foregroundColor(.accentColor)
+                            }
+                            .scaleButton()
                         }
-                    }) {
-                        Image(systemName: settings ? "xmark" : "gearshape.fill")
-                            .imageScale(.large)
+                        
+                        /// Sending button to top
+                        if settings {
+                            Spacer()
+                        }
                     }
                 }
             }
             
-            // MARK: - Settings
-            if settings {
-                SettingsView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .transition(.move(edge: .bottom))
-            }
         }
         .padding(searchState ? 0 : 30)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

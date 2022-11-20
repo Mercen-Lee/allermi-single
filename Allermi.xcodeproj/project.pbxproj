@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		932730B02929C20E00691DF3 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932730AF2929C20E00691DF3 /* SelectionView.swift */; };
-		933F95932929161E00C71705 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933F95922929161E00C71705 /* SettingsView.swift */; };
 		93725BA32916D8220008BC79 /* AllermiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA22916D8220008BC79 /* AllermiApp.swift */; };
 		93725BA52916D8220008BC79 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA42916D8220008BC79 /* MainView.swift */; };
 		93725BA72916D8230008BC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93725BA62916D8230008BC79 /* Assets.xcassets */; };
@@ -20,7 +19,6 @@
 		938501D82927DD1300BDF157 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938501D72927DD1300BDF157 /* SearchView.swift */; };
 		938501DD2927E6D200BDF157 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 938501DC2927E6D200BDF157 /* Kingfisher */; };
 		938501E12927EFCC00BDF157 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = 938501E02927EFCC00BDF157 /* MarqueeText */; };
-		93B33D762917E6100041904B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B33D752917E6100041904B /* RegisterView.swift */; };
 		93B33D79291877550041904B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D78291877550041904B /* RealmSwift */; };
 		93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D7B2918C9950041904B /* SwiftSoup */; };
 		93BDD0C8291928FC0080B3C1 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 93BDD0C7291928FC0080B3C1 /* WrappingHStack */; };
@@ -30,7 +28,6 @@
 
 /* Begin PBXFileReference section */
 		932730AF2929C20E00691DF3 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
-		933F95922929161E00C71705 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		93725B9F2916D8220008BC79 /* Allermi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Allermi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93725BA22916D8220008BC79 /* AllermiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllermiApp.swift; sourceTree = "<group>"; };
 		93725BA42916D8220008BC79 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -42,7 +39,6 @@
 		938501D72927DD1300BDF157 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		938501DE2927E7B500BDF157 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		938501E52928059E00BDF157 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		93B33D752917E6100041904B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		93E8A90E291A11CA009B3FE0 /* DevicePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePreset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,14 +66,6 @@
 				932730AF2929C20E00691DF3 /* SelectionView.swift */,
 			);
 			path = SelectionView;
-			sourceTree = "<group>";
-		};
-		933F95912929160E00C71705 /* SettingsView */ = {
-			isa = PBXGroup;
-			children = (
-				933F95922929161E00C71705 /* SettingsView.swift */,
-			);
-			path = SettingsView;
 			sourceTree = "<group>";
 		};
 		93725B962916D8220008BC79 = {
@@ -133,9 +121,7 @@
 			children = (
 				93725BA42916D8220008BC79 /* MainView.swift */,
 				932730AE2929C1F800691DF3 /* SelectionView */,
-				93B33D742917E5FA0041904B /* RegisterView */,
 				938501D62927DD0700BDF157 /* SearchView */,
-				933F95912929160E00C71705 /* SettingsView */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -155,14 +141,6 @@
 				938501D72927DD1300BDF157 /* SearchView.swift */,
 			);
 			path = SearchView;
-			sourceTree = "<group>";
-		};
-		93B33D742917E5FA0041904B /* RegisterView */ = {
-			isa = PBXGroup;
-			children = (
-				93B33D752917E6100041904B /* RegisterView.swift */,
-			);
-			path = RegisterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,14 +230,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93B33D762917E6100041904B /* RegisterView.swift in Sources */,
 				938501D82927DD1300BDF157 /* SearchView.swift in Sources */,
 				93725BA52916D8220008BC79 /* MainView.swift in Sources */,
 				93725BB42916D8C70008BC79 /* ViewPreset.swift in Sources */,
 				93725BBC2916D9870008BC79 /* AllergyData.swift in Sources */,
 				93725BB12916D89D0008BC79 /* LaunchView.swift in Sources */,
 				93E8A90F291A11CA009B3FE0 /* DevicePreset.swift in Sources */,
-				933F95932929161E00C71705 /* SettingsView.swift in Sources */,
 				93725BA32916D8220008BC79 /* AllermiApp.swift in Sources */,
 				93725BBA2916D97E0008BC79 /* AllergyBase.swift in Sources */,
 				932730B02929C20E00691DF3 /* SelectionView.swift in Sources */,

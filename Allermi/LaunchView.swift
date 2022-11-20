@@ -141,7 +141,8 @@ struct LaunchView: View {
             
         } else if registering {
             
-            RegisterView(registering: $registering)
+            SelectionView(selection: $registering)
+                .padding(30)
                 .zIndex(-1)
                 .transition(.backslide)
             

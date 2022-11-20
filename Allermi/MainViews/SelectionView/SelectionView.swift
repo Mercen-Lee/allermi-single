@@ -9,7 +9,11 @@ import WrappingHStack
 struct SelectionView: View {
     
     /// Bindings
-    @Binding var selectedAllergy: [String]
+    @Binding var selection: Bool
+    
+    /// State Variables
+    @State private var selectedAllergy: [String] = [String]()
+    @State private var title: String = String()
     
     /// Static Variables
     private let allergyList: OrderedDictionary = ["난류": ["달걀", "계란", "메추리알"],
@@ -28,6 +32,10 @@ struct SelectionView: View {
                                                   "아황산류": []]
     
     /// Local Variables
+    private var allergy: [String]? {
+        return UserDefaults.standard.array(forKey: "allergy") as? [String]
+    }
+    
     private var viewList: [String] {
         var result = [String]()
         for key in allergyList.keys {
@@ -45,6 +53,15 @@ struct SelectionView: View {
     }
     
     /// Local Functions
+    private func loadAllergy() {
+        if allergy == nil {
+            title = "알레르미 시작하기"
+        } else {
+            selectedAllergy = allergy!
+            title = "알레르미 필터 설정"
+        }
+    }
+    
     private func chooseColor(_ value: String) -> Color {
         if selectedAllergy.contains(value) {
             return .accentColor
@@ -56,34 +73,95 @@ struct SelectionView: View {
     }
     
     var body: some View {
-        WrappingHStack(viewList) { value in
-            Button(action: {
-                touch()
-                var majorAllergy = String()
-                for key in allergyList.keys {
-                    if allergyList[key]!.contains(value) || key == value {
-                        majorAllergy = key
-                    }
-                }
-                withAnimation(.default) {
-                    if selectedAllergy.contains(majorAllergy) {
-                        selectedAllergy = selectedAllergy.filter {
-                            $0 != majorAllergy
+        
+        ZStack {
+            
+            // MARK: - Allergy Selection
+            ScrollView(showsIndicators: false) {
+                WrappingHStack(viewList) { value in
+                    Button(action: {
+                        touch()
+                        var majorAllergy = String()
+                        for key in allergyList.keys {
+                            if allergyList[key]!.contains(value) || key == value {
+                                majorAllergy = key
+                            }
                         }
-                    } else {
-                        selectedAllergy.append(majorAllergy)
+                        withAnimation(.default) {
+                            if selectedAllergy.contains(majorAllergy) {
+                                selectedAllergy = selectedAllergy.filter {
+                                    $0 != majorAllergy
+                                }
+                            } else {
+                                selectedAllergy.append(majorAllergy)
+                            }
+                        }
+                    }) {
+                        Text(value)
+                            .foregroundColor(Color(.systemBackground))
+                            .padding([.leading, .trailing], 10)
+                            .frame(height: 30)
+                            .background(chooseColor(value))
+                            .clipShape(Capsule())
+                    }
+                    .scaleButton()
+                    .padding(.bottom, 7)
+                }
+                .padding(.top, 150)
+            }
+            
+            // MARK: - ScrollView Fader
+            .mask(
+                VStack(spacing: 0) {
+                    ForEach(0..<2) { idx in
+                        LinearGradient(gradient:
+                                        Gradient(
+                                            colors: idx == 0 ? [.clear, .black]
+                                            : [.black, .clear]),
+                                       startPoint: .top,
+                                       endPoint: .bottom
+                        )
+                        .frame(height: 50)
+                        if idx == 0 {
+                            Rectangle().fill(Color.black)
+                        }
                     }
                 }
-            }) {
-                Text(value)
-                    .foregroundColor(Color(.systemBackground))
-                    .padding([.leading, .trailing], 10)
-                    .frame(height: 30)
-                    .background(chooseColor(value))
-                    .clipShape(Capsule())
+                    .padding(.top, 100)
+                    .padding(.bottom, 40)
+            )
+            
+            VStack(alignment: .leading, spacing: 5) {
+                // MARK: - Title
+                Text(title)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.top, 50)
+                
+                // MARK: - Subtitle
+                Text("보유하고 계신 알레르기를 선택해주세요.")
+                
+                Spacer()
+                
+                // MARK: - Complete Button
+                Button(action: {
+                    touch()
+                    withAnimation(.default) {
+                        UserDefaults.standard.set(selectedAllergy, forKey: "allergy")
+                        selection.toggle()
+                    }
+                }) {
+                    Text("완료하기")
+                        .foregroundColor(Color(.systemBackground))
+                        .fontWeight(.bold)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                }
+                .disabled(selectedAllergy.isEmpty)
             }
-            .scaleButton()
-            .padding(.bottom, 7)
         }
+        .onAppear(perform: loadAllergy)
     }
 }

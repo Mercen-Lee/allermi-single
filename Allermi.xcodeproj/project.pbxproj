@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		932730B02929C20E00691DF3 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932730AF2929C20E00691DF3 /* SelectionView.swift */; };
+		933F95932929161E00C71705 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933F95922929161E00C71705 /* SettingsView.swift */; };
 		93725BA32916D8220008BC79 /* AllermiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA22916D8220008BC79 /* AllermiApp.swift */; };
 		93725BA52916D8220008BC79 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA42916D8220008BC79 /* MainView.swift */; };
 		93725BA72916D8230008BC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93725BA62916D8230008BC79 /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		932730AF2929C20E00691DF3 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		933F95922929161E00C71705 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		93725B9F2916D8220008BC79 /* Allermi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Allermi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93725BA22916D8220008BC79 /* AllermiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllermiApp.swift; sourceTree = "<group>"; };
 		93725BA42916D8220008BC79 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -60,6 +64,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		932730AE2929C1F800691DF3 /* SelectionView */ = {
+			isa = PBXGroup;
+			children = (
+				932730AF2929C20E00691DF3 /* SelectionView.swift */,
+			);
+			path = SelectionView;
+			sourceTree = "<group>";
+		};
+		933F95912929160E00C71705 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				933F95922929161E00C71705 /* SettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
 		93725B962916D8220008BC79 = {
 			isa = PBXGroup;
 			children = (
@@ -112,8 +132,10 @@
 			isa = PBXGroup;
 			children = (
 				93725BA42916D8220008BC79 /* MainView.swift */,
+				932730AE2929C1F800691DF3 /* SelectionView */,
 				93B33D742917E5FA0041904B /* RegisterView */,
 				938501D62927DD0700BDF157 /* SearchView */,
+				933F95912929160E00C71705 /* SettingsView */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -237,8 +259,10 @@
 				93725BBC2916D9870008BC79 /* AllergyData.swift in Sources */,
 				93725BB12916D89D0008BC79 /* LaunchView.swift in Sources */,
 				93E8A90F291A11CA009B3FE0 /* DevicePreset.swift in Sources */,
+				933F95932929161E00C71705 /* SettingsView.swift in Sources */,
 				93725BA32916D8220008BC79 /* AllermiApp.swift in Sources */,
 				93725BBA2916D97E0008BC79 /* AllergyBase.swift in Sources */,
+				932730B02929C20E00691DF3 /* SelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

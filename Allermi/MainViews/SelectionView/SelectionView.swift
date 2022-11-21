@@ -3,7 +3,6 @@
 
 import SwiftUI
 import Collections
-import WrappingHStack
 
 // MARK: - Settings View
 struct SelectionView: View {
@@ -71,6 +70,69 @@ struct SelectionView: View {
             return .gray.opacity(0.4)
         }
     }
+
+    // MARK: - Custom WrappingHStack
+    private func wrappingHStack(in geometry: GeometryProxy) -> some View {
+        var width = CGFloat.zero
+        var height = CGFloat.zero
+
+        return ZStack(alignment: .topLeading) {
+            ForEach(viewList, id: \.self) { allergy in
+                itemCell(for: allergy)
+                    .padding([.bottom, .trailing], 7)
+                    .alignmentGuide(.leading, computeValue: { value in
+                        if (abs(width - value.width) > geometry.size.width) {
+                            width = 0
+                            height -= value.height
+                        }
+                        let result = width
+                        if allergy == viewList.last! {
+                            width = 0
+                        } else {
+                            width -= value.width
+                        }
+                        return result
+                    })
+                    .alignmentGuide(.top, computeValue: { _ in
+                        let result = height
+                        if allergy == viewList.last! {
+                            height = 0
+                        }
+                        return result
+                    })
+            }
+        }
+    }
+    
+    // MARK: - Allergy Cell
+    private func itemCell(for value: String) -> some View {
+        Button(action: {
+            touch()
+            var majorAllergy = String()
+            for key in allergyList.keys {
+                if allergyList[key]!.contains(value) || key == value {
+                    majorAllergy = key
+                }
+            }
+            withAnimation(.default) {
+                if selectedAllergy.contains(majorAllergy) {
+                    selectedAllergy = selectedAllergy.filter {
+                        $0 != majorAllergy
+                    }
+                } else {
+                    selectedAllergy.append(majorAllergy)
+                }
+            }
+        }) {
+            Text(value)
+                .foregroundColor(Color(.systemBackground))
+                .padding([.leading, .trailing], 10)
+                .frame(height: 30)
+                .background(chooseColor(value))
+                .clipShape(Capsule())
+        }
+        .scaleButton()
+    }
     
     var body: some View {
         
@@ -78,34 +140,8 @@ struct SelectionView: View {
             
             // MARK: - Allergy Selection
             ScrollView(showsIndicators: false) {
-                WrappingHStack(viewList) { value in
-                    Button(action: {
-                        touch()
-                        var majorAllergy = String()
-                        for key in allergyList.keys {
-                            if allergyList[key]!.contains(value) || key == value {
-                                majorAllergy = key
-                            }
-                        }
-                        withAnimation(.default) {
-                            if selectedAllergy.contains(majorAllergy) {
-                                selectedAllergy = selectedAllergy.filter {
-                                    $0 != majorAllergy
-                                }
-                            } else {
-                                selectedAllergy.append(majorAllergy)
-                            }
-                        }
-                    }) {
-                        Text(value)
-                            .foregroundColor(Color(.systemBackground))
-                            .padding([.leading, .trailing], 10)
-                            .frame(height: 30)
-                            .background(chooseColor(value))
-                            .clipShape(Capsule())
-                    }
-                    .scaleButton()
-                    .padding(.bottom, 7)
+                GeometryReader { geometry in
+                    wrappingHStack(in: geometry)
                 }
                 .padding(.top, 150)
             }

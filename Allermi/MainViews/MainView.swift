@@ -106,9 +106,10 @@ struct MainView: View {
                                     settings.toggle()
                                 }
                             }) {
-                                Image(systemName: "gearshape.fill")
-                                    .imageScale(.large)
+                                Image(systemName: settings ? "xmark" : "gearshape.fill")
+                                    .font(Font.title.weight(.medium))
                                     .foregroundColor(.accentColor)
+                                    .rotationEffect(.degrees(settings ? -180 : 0))
                             }
                             .scaleButton()
                         }

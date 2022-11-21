@@ -13,12 +13,26 @@ struct SearchView: View {
     let searchText: String
     
     /// Local Variables
+    private var allergy: [String]? {
+        return UserDefaults.standard.array(forKey: "allergy") as? [String]
+    }
+    
     private var allergyData: [AllergyData] {
         let realm = try! Realm()
         return Array(realm.objects(AllergyData.self)
             .filter("productName CONTAINS %@", "\(searchText)"))
     }
     
+    /// Local Functions
+    private func hasAllergy(_ data: [String]) -> String? {
+        let filtered = allergy!.filter { data.contains($0) }
+        if filtered.isEmpty {
+            return nil
+        } else {
+            return "\(filtered.joined(separator: ", ")) 일치"
+        }
+    }
+
     var body: some View {
         if allergyData.isEmpty {
             
@@ -30,7 +44,7 @@ struct SearchView: View {
             
             // MARK: - Data List
             ScrollView {
-                VStack(spacing: 0) {
+                LazyVStack(spacing: 0) {
                     ForEach(allergyData, id: \.self) { data in
                         
                         // MARK: - Data Cell
@@ -56,18 +70,18 @@ struct SearchView: View {
                             /// Allergy Informations
                             VStack(alignment: .leading, spacing: 0) {
                                 MarqueeText(
-                                     text: data.productName,
-                                     font: UIFont.boldSystemFont(ofSize: 22),
-                                     leftFade: 5,
-                                     rightFade: 5,
-                                     startDelay: 2
+                                    text: data.productName,
+                                    font: UIFont.boldSystemFont(ofSize: 22),
+                                    leftFade: 5,
+                                    rightFade: 5,
+                                    startDelay: 2
                                 )
                                 MarqueeText(
-                                     text: "알레르기 해당 없음",
-                                     font: UIFont.preferredFont(forTextStyle: .body),
-                                     leftFade: 5,
-                                     rightFade: 5,
-                                     startDelay: 2
+                                    text: hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음",
+                                    font: UIFont.preferredFont(forTextStyle: .body),
+                                    leftFade: 5,
+                                    rightFade: 5,
+                                    startDelay: 2
                                 )
                             }
                             
@@ -75,7 +89,9 @@ struct SearchView: View {
                         }
                         .padding(15)
                         .frame(maxWidth: .infinity)
-                        .background(Color.gray.opacity(0.2))
+                        .background(hasAllergy(Array(data.allergyList)) == nil ?
+                                        Color.gray.opacity(0.2) :
+                                        Color.accentColor.opacity(0.6))
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                         .padding([.top, .leading, .trailing], 15)
                     }

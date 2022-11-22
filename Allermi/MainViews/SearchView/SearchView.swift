@@ -9,6 +9,9 @@ import MarqueeText
 // MARK: - Search View
 struct SearchView: View {
     
+    /// Bindings
+    @Binding var detailState: Bool
+    
     /// Namespaces
     @Namespace private var animation
     
@@ -48,7 +51,7 @@ struct SearchView: View {
             
         } else {
             
-            if selected == nil {
+            if !detailState {
                 // MARK: - Data List
                 ScrollView {
                     LazyVStack(spacing: 0) {
@@ -56,7 +59,9 @@ struct SearchView: View {
                             
                             // MARK: - Data Cell
                             Button(action: {
+                                touch()
                                 withAnimation(springAnimation) {
+                                    detailState = true
                                     selected = data
                                 }
                             }) {
@@ -126,7 +131,7 @@ struct SearchView: View {
                     }
                 )
             } else {
-                DetailView(data: selected!, animation: animation)
+                DetailView(detailState: $detailState, data: selected!, animation: animation)
             }
         }
     }

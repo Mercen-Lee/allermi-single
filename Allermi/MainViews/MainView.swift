@@ -2,18 +2,17 @@
 /// Created by Mercen on 2022/11/03.
 
 import SwiftUI
+import SwiftUIX
 import RealmSwift
-import ResponderChain
 import AVKit
 
 // MARK: - Main View
 struct MainView: View {
     
-    /// Environments
-    @EnvironmentObject private var chain: ResponderChain
-    
     /// State Variables
+    @State private var keyboardState: Bool = false
     @State private var focusState: Bool = false
+    @State private var detailState: Bool = false
     @State private var settings: Bool = false
     @State private var typedText: String = String()
     @State private var searchText: String = String()
@@ -47,71 +46,78 @@ struct MainView: View {
                         .foregroundColor(.accentColor)
                         .frame(width: 230)
                         .padding(.bottom, 30)
+                        .transition(.move(edge: .top)
+                            .combined(with: .opacity))
                 }
                 
                 // MARK: - Text Input
-                ZStack {
-                    
-                    /// Placeholder
-                    if typedText.isEmpty && !searchState && !focusState {
-                        Text("식품명을 입력해 검색하세요")
-                            .foregroundColor(.gray)
-                    }
-                    
-                    /// Text Container
-                    HStack {
+                if !detailState {
+                    ZStack {
                         
-                        if !searchState {
+                        /// Placeholder
+                        if typedText.isEmpty && !searchState && !focusState {
+                            Text("식품명을 입력해 검색하세요")
+                                .foregroundColor(.gray)
+                        }
+                        
+                        /// Text Container
+                        HStack {
+                            
+                            if !searchState {
+                                Spacer()
+                            }
+                            
+                            /// Text Field
+                            CocoaTextField("", text: $typedText, onEditingChanged: { editingChanged in
+                                if focusState {
+                                    changeFocusState(editingChanged)
+                                } else {
+                                    focusState = editingChanged
+                                }
+                            }, onCommit: {
+                                if !typedText.isEmpty {
+                                    keyboardState = false
+                                    withAnimation(springAnimation) {
+                                        searchText = typedText
+                                    }
+                                }
+                            })
+                            .isFirstResponder(keyboardState)
+                            .multilineTextAlignment(.leading)
+                            .fixedSize()
                             Spacer()
-                        }
-                        
-                        /// Text Field
-                        TextField("", text: $typedText, onEditingChanged: { editingChanged in
-                            if focusState {
-                                changeFocusState(editingChanged)
-                            } else {
-                                focusState = editingChanged
-                            }
-                        }, onCommit: {
+                            
+                            /// Erase Button
                             if !typedText.isEmpty {
-                                withAnimation(springAnimation) {
-                                    searchText = typedText
+                                Button(action: {
+                                    if player.currentItem != nil {
+                                        player.replaceCurrentItem(with: nil)
+                                    }
+                                    touch()
+                                    keyboardState = false
+                                    focusState = true
+                                    changeFocusState(false)
+                                    withAnimation(springAnimation) {
+                                        typedText = String()
+                                        searchText = String()
+                                    }
+                                }) {
+                                    Image(systemName: "xmark.circle.fill")
                                 }
-                            }
-                        })
-                        .responderTag("main")
-                        .multilineTextAlignment(.leading)
-                        .fixedSize()
-                        Spacer()
-                        
-                        /// Erase Button
-                        if !typedText.isEmpty {
-                            Button(action: {
-                                if player.currentItem != nil {
-                                    player.replaceCurrentItem(with: nil)
-                                }
-                                touch()
-                                chain.firstResponder = nil
-                                focusState = true
-                                changeFocusState(false)
-                                withAnimation(springAnimation) {
-                                    typedText = String()
-                                    searchText = String()
-                                }
-                            }) {
-                                Image(systemName: "xmark.circle.fill")
                             }
                         }
+                        .padding(20)
+                        .frame(maxWidth: searchState ? .infinity : 500)
+                        .background(Color.gray.opacity(0.2)
+                            .clipShape(RoundedRectangle(cornerRadius: searchState ? 0 : 20))
+                            .ignoresSafeArea(edges: .top))
+                        .keyboardType(.webSearch)
                     }
-                    .padding(20)
-                    .frame(maxWidth: searchState ? .infinity : 500)
-                    .background(Color.gray.opacity(0.2)
-                        .clipShape(RoundedRectangle(cornerRadius: searchState ? 0 : 20))
-                        .ignoresSafeArea(edges: .top))
-                    .keyboardType(.webSearch)
-                }
-                .onTapGesture {
-                    chain.firstResponder = "main"
+                    .transition(.move(edge: .top)
+                        .combined(with: .opacity))
+                    .onTapGesture {
+                        keyboardState = true
+                    }
                 }
             }
             
@@ -132,7 +138,7 @@ struct MainView: View {
                         .frame(maxHeight: .infinity)
                         .disabled(true)
                 } else {
-                    SearchView(searchText: searchText)
+                    SearchView(detailState: $detailState, searchText: searchText)
                         .transition(.move(edge: .bottom)
                             .combined(with: .opacity))
                         .ignoresSafeArea(.keyboard)
@@ -161,6 +167,7 @@ struct MainView: View {
                             Button(action: {
                                 touch()
                                 endTextEditing()
+                                keyboardState = false
                                 withAnimation(springAnimation) {
                                     settings.toggle()
                                 }
@@ -185,7 +192,7 @@ struct MainView: View {
         .background(Color(.systemBackground).ignoresSafeArea())
         .onTapGesture {
             endTextEditing()
-            chain.firstResponder = nil
+            keyboardState = false
         }
     }
 }

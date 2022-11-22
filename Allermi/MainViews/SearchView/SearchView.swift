@@ -64,7 +64,7 @@ struct SearchView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 70, height: 70)
-                                .background(Color.gray.opacity(0.2))
+                                .background(Color(.systemBackground).opacity(0.2))
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                             
                             /// Allergy Informations
@@ -98,6 +98,18 @@ struct SearchView: View {
                 }
                 .padding(.bottom, 15)
             }
+            .mask(
+                VStack(spacing: 0) {
+                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.5), .black]),
+                                   startPoint: .top,
+                                    endPoint: .bottom
+                        )
+                    .frame(height: 15)
+                    Rectangle()
+                        .fill(Color.black)
+                        .ignoresSafeArea(edges: .bottom)
+                }
+            )
         }
     }
 }

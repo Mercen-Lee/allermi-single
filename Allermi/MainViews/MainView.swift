@@ -3,9 +3,13 @@
 
 import SwiftUI
 import RealmSwift
+import ResponderChain
 
 // MARK: - Main View
 struct MainView: View {
+    
+    /// Environments
+    @EnvironmentObject private var chain: ResponderChain
     
     /// State Variables
     @State private var focusState: Bool = false
@@ -16,6 +20,15 @@ struct MainView: View {
     /// Local Variables
     private var searchState: Bool {
         return !searchText.isEmpty
+    }
+    
+    /// Local Functions
+    private func changeFocusState(_ value: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            withAnimation(.default) {
+                focusState = value
+            }
+        }
     }
     
     var body: some View {
@@ -46,9 +59,17 @@ struct MainView: View {
                     /// Text Container
                     HStack {
                         
+                        if !searchState {
+                            Spacer()
+                        }
+                        
                         /// Text Field
                         TextField("", text: $typedText, onEditingChanged: { editingChanged in
-                            focusState = editingChanged
+                            if focusState {
+                                changeFocusState(editingChanged)
+                            } else {
+                                focusState = editingChanged
+                            }
                         }, onCommit: {
                             if !typedText.isEmpty {
                                 withAnimation(.default) {
@@ -56,12 +77,18 @@ struct MainView: View {
                                 }
                             }
                         })
-                        .multilineTextAlignment(searchState ? .leading : .center)
+                        .responderTag("main")
+                        .multilineTextAlignment(.leading)
+                        .fixedSize()
                         Spacer()
                         
                         /// Erase Button
-                        if !searchText.isEmpty || searchState {
+                        if !typedText.isEmpty {
                             Button(action: {
+                                touch()
+                                chain.firstResponder = nil
+                                focusState = true
+                                changeFocusState(false)
                                 withAnimation(.default) {
                                     typedText = ""
                                     searchText = ""
@@ -77,6 +104,9 @@ struct MainView: View {
                         .clipShape(RoundedRectangle(cornerRadius: searchState ? 0 : 20))
                         .ignoresSafeArea(edges: .top))
                     .keyboardType(.webSearch)
+                }
+                .onTapGesture {
+                    chain.firstResponder = "main"
                 }
             }
             
@@ -124,7 +154,10 @@ struct MainView: View {
             
         }
         .padding(searchState ? 0 : 30)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onTapGesture(perform: endTextEditing)
+        .background(Color(.systemBackground).ignoresSafeArea())
+        .onTapGesture {
+            endTextEditing()
+            chain.firstResponder = nil
+        }
     }
 }

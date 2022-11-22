@@ -16,6 +16,7 @@
 		93725BBA2916D97E0008BC79 /* AllergyBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BB92916D97E0008BC79 /* AllergyBase.swift */; };
 		93725BBC2916D9870008BC79 /* AllergyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BBB2916D9870008BC79 /* AllergyData.swift */; };
 		93725BBF2916D9A40008BC79 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 93725BBE2916D9A40008BC79 /* Alamofire */; };
+		937CF978292C479E00D55DB2 /* ResponderChain in Frameworks */ = {isa = PBXBuildFile; productRef = 937CF977292C479E00D55DB2 /* ResponderChain */; };
 		938501D82927DD1300BDF157 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938501D72927DD1300BDF157 /* SearchView.swift */; };
 		938501DD2927E6D200BDF157 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 938501DC2927E6D200BDF157 /* Kingfisher */; };
 		938501E12927EFCC00BDF157 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = 938501E02927EFCC00BDF157 /* MarqueeText */; };
@@ -47,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				938501DD2927E6D200BDF157 /* Kingfisher in Frameworks */,
+				937CF978292C479E00D55DB2 /* ResponderChain in Frameworks */,
 				93B33D79291877550041904B /* RealmSwift in Frameworks */,
 				93BDD0CB2919E98C0080B3C1 /* Collections in Frameworks */,
 				93725BBF2916D9A40008BC79 /* Alamofire in Frameworks */,
@@ -164,6 +166,7 @@
 				93BDD0CA2919E98C0080B3C1 /* Collections */,
 				938501DC2927E6D200BDF157 /* Kingfisher */,
 				938501E02927EFCC00BDF157 /* MarqueeText */,
+				937CF977292C479E00D55DB2 /* ResponderChain */,
 			);
 			productName = Allermi;
 			productReference = 93725B9F2916D8220008BC79 /* Allermi.app */;
@@ -200,6 +203,7 @@
 				93BDD0C92919E98C0080B3C1 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				938501DB2927E6D200BDF157 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				938501DF2927EFCC00BDF157 /* XCRemoteSwiftPackageReference "MarqueeText" */,
+				937CF976292C479E00D55DB2 /* XCRemoteSwiftPackageReference "ResponderChain" */,
 			);
 			productRefGroup = 93725BA02916D8220008BC79 /* Products */;
 			projectDirPath = "";
@@ -451,6 +455,14 @@
 				kind = branch;
 			};
 		};
+		937CF976292C479E00D55DB2 /* XCRemoteSwiftPackageReference "ResponderChain" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Amzd/ResponderChain";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		938501DB2927E6D200BDF157 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -498,6 +510,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		937CF977292C479E00D55DB2 /* ResponderChain */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 937CF976292C479E00D55DB2 /* XCRemoteSwiftPackageReference "ResponderChain" */;
+			productName = ResponderChain;
 		};
 		938501DC2927E6D200BDF157 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -139,11 +139,12 @@ struct SelectionView: View {
         ZStack {
             
             // MARK: - Allergy Selection
-            ScrollView(showsIndicators: false) {
-                GeometryReader { geometry in
+            GeometryReader { geometry in
+                ScrollView(showsIndicators: false) {
                     wrappingHStack(in: geometry)
+                        .padding(.top, 150)
+                        .padding(.bottom, 80)
                 }
-                .padding(.top, 150)
             }
             
             // MARK: - ScrollView Fader

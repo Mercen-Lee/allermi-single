@@ -14,9 +14,9 @@ struct MainView: View {
     
     /// State Variables
     @State private var focusState: Bool = false
-    @State private var typedText: String = ""
-    @State private var searchText: String = ""
     @State private var settings: Bool = false
+    @State private var typedText: String = String()
+    @State private var searchText: String = String()
     
     /// Local Variables
     private var searchState: Bool {
@@ -95,8 +95,8 @@ struct MainView: View {
                                 focusState = true
                                 changeFocusState(false)
                                 withAnimation(.default) {
-                                    typedText = ""
-                                    searchText = ""
+                                    typedText = String()
+                                    searchText = String()
                                 }
                             }) {
                                 Image(systemName: "xmark.circle.fill")

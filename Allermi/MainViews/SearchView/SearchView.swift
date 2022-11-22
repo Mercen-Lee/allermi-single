@@ -64,7 +64,7 @@ struct SearchView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 70, height: 70)
-                                .background(Color(.systemBackground).opacity(0.2))
+                                .background(Color(.systemBackground).opacity(0.5))
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                             
                             /// Allergy Informations

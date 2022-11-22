@@ -43,7 +43,7 @@ struct LaunchView: View {
         let rawEncoding = CFStringConvertEncodingToNSStringEncoding(0x0422)
         let encoding = String.Encoding(rawValue: rawEncoding)
         
-        var resultString: String = ""
+        var resultString: String = String()
         var idx: Int = 0
         
         /// Decoding Process

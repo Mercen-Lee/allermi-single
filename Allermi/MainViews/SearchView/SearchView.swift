@@ -86,14 +86,22 @@ struct SearchView: View {
                                     
                                     /// Allergy Informations
                                     VStack(alignment: .leading, spacing: 0) {
-                                        MarqueeText(
-                                            text: data.productName,
-                                            font: UIFont.boldSystemFont(ofSize: 22),
-                                            leftFade: 5,
-                                            rightFade: 5,
-                                            startDelay: 2
-                                        )
-                                        .matchedGeometryEffect(id: "\(data.productNumber) text", in: animation)
+                                        ZStack {
+                                            HStack {
+                                                Text(data.productName)
+                                                    .font(.title2)
+                                                    .matchedGeometryEffect(id: "\(data.productNumber) text", in: animation)
+                                                    .hidden()
+                                                Spacer()
+                                            }
+                                            MarqueeText(
+                                                text: data.productName,
+                                                font: UIFont.boldSystemFont(ofSize: 22),
+                                                leftFade: 5,
+                                                rightFade: 5,
+                                                startDelay: 2
+                                            )
+                                        }
                                         MarqueeText(
                                             text: hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음",
                                             font: UIFont.preferredFont(forTextStyle: .body),

@@ -11,6 +11,8 @@ extension View {
     }
 }
 
+public let springAnimation: Animation = .spring(dampingFraction: 0.75, blendDuration: 0.5)
+
 // MARK: - Transition Extension
 extension AnyTransition {
     static var backslide: AnyTransition {

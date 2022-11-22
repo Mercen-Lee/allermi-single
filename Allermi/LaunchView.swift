@@ -28,9 +28,7 @@ struct LaunchView: View {
     private func updateAnimationStatus(time: CGFloat) {
         DispatchQueue.main.asyncAfter(
             deadline: .now() + time, execute: {
-                //withAnimation(animationStatus >= 5 ? .default :
-                        //.spring(response: 0.55, dampingFraction: 0.45)) {
-                withAnimation(.default) {
+                withAnimation(springAnimation) {
                     animationStatus += 1
                 }
             })
@@ -90,7 +88,7 @@ struct LaunchView: View {
     
     // MARK: - Database Downloader
     private func downloadDatabase() {
-        withAnimation(.default) {
+        withAnimation(springAnimation) {
             dataLoadStatus = true
         }
         AF.request("https://bigdata.gyeongnam.go.kr/index.gn?contentsSid=409&apiIdx=501",
@@ -109,7 +107,7 @@ struct LaunchView: View {
                 checkDatabase() { ver in
                     UserDefaults.standard.set(ver, forKey: "version")
                 }
-                withAnimation(.default) {
+                withAnimation(springAnimation) {
                     dataLoadStatus = false
                 }
             case .failure:
@@ -181,7 +179,7 @@ struct LaunchView: View {
                         .transition(.scale)
                         .onAppear {
                             initFunction()
-                            updateAnimationStatus(time: 1)
+                            updateAnimationStatus(time: 1.3)
                         }
                     
                     // MARK: - Loading
@@ -201,7 +199,7 @@ struct LaunchView: View {
                         Spacer()
                         Button(action: {
                             touch()
-                            withAnimation(.default) {
+                            withAnimation(springAnimation) {
                                 registering.toggle()
                             }
                         }) {

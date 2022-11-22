@@ -114,7 +114,7 @@ struct SelectionView: View {
                     majorAllergy = key
                 }
             }
-            withAnimation(.default) {
+            withAnimation(springAnimation) {
                 if selectedAllergy.contains(majorAllergy) {
                     selectedAllergy = selectedAllergy.filter {
                         $0 != majorAllergy
@@ -183,7 +183,7 @@ struct SelectionView: View {
                 // MARK: - Complete Button
                 Button(action: {
                     touch()
-                    withAnimation(.default) {
+                    withAnimation(springAnimation) {
                         UserDefaults.standard.set(selectedAllergy, forKey: "allergy")
                         selection.toggle()
                     }

@@ -26,7 +26,7 @@ struct MainView: View {
     
     /// Local Functions
     private func changeFocusState(_ value: Bool) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             withAnimation(.default) {
                 focusState = value
             }
@@ -74,7 +74,7 @@ struct MainView: View {
                             }
                         }, onCommit: {
                             if !typedText.isEmpty {
-                                withAnimation(.default) {
+                                withAnimation(springAnimation) {
                                     searchText = typedText
                                 }
                             }
@@ -94,7 +94,7 @@ struct MainView: View {
                                 chain.firstResponder = nil
                                 focusState = true
                                 changeFocusState(false)
-                                withAnimation(.default) {
+                                withAnimation(springAnimation) {
                                     typedText = String()
                                     searchText = String()
                                 }
@@ -133,7 +133,8 @@ struct MainView: View {
                         .disabled(true)
                 } else {
                     SearchView(searchText: searchText)
-                        .transition(.move(edge: .bottom))
+                        .transition(.move(edge: .bottom)
+                            .combined(with: .opacity))
                         .ignoresSafeArea(.keyboard)
                         .onAppear {
                             if player.currentItem != nil {
@@ -149,7 +150,8 @@ struct MainView: View {
                 ZStack {
                     if settings {
                         SelectionView(selection: $settings)
-                            .transition(.move(edge: .bottom))
+                            .transition(.move(edge: .bottom)
+                                .combined(with: .opacity))
                     }
                     
                     // MARK: - Settings Button
@@ -159,14 +161,14 @@ struct MainView: View {
                             Button(action: {
                                 touch()
                                 endTextEditing()
-                                withAnimation(.default) {
+                                withAnimation(springAnimation) {
                                     settings.toggle()
                                 }
                             }) {
                                 Image(systemName: settings ? "xmark" : "gearshape.fill")
                                     .font(Font.title.weight(.medium))
                                     .foregroundColor(.accentColor)
-                                    .rotationEffect(.degrees(settings ? -180 : 0))
+                                    .rotationEffect(.degrees(settings ? 90 : 0))
                             }
                             .scaleButton()
                         }
@@ -178,7 +180,6 @@ struct MainView: View {
                     }
                 }
             }
-            
         }
         .padding(searchState ? 0 : 30)
         .background(Color(.systemBackground).ignoresSafeArea())

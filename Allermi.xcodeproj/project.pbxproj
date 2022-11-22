@@ -23,6 +23,7 @@
 		93B33D79291877550041904B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D78291877550041904B /* RealmSwift */; };
 		93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D7B2918C9950041904B /* SwiftSoup */; };
 		93BDD0CB2919E98C0080B3C1 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 93BDD0CA2919E98C0080B3C1 /* Collections */; };
+		93C0CE40292C698A0031BD76 /* Developers.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93C0CE3F292C68640031BD76 /* Developers.mp4 */; };
 		93E8A90F291A11CA009B3FE0 /* DevicePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E8A90E291A11CA009B3FE0 /* DevicePreset.swift */; };
 		93F03A14292C630D00B16803 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 93F03A13292C630D00B16803 /* Settings.bundle */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		938501D72927DD1300BDF157 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		938501DE2927E7B500BDF157 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		938501E52928059E00BDF157 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		93C0CE3F292C68640031BD76 /* Developers.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Developers.mp4; sourceTree = "<group>"; };
 		93E8A90E291A11CA009B3FE0 /* DevicePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePreset.swift; sourceTree = "<group>"; };
 		93F03A13292C630D00B16803 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +77,7 @@
 			children = (
 				93F03A13292C630D00B16803 /* Settings.bundle */,
 				938501E52928059E00BDF157 /* README.md */,
+				93C0CE3F292C68640031BD76 /* Developers.mp4 */,
 				93725BA12916D8220008BC79 /* Allermi */,
 				93725BA02916D8220008BC79 /* Products */,
 			);
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93F03A14292C630D00B16803 /* Settings.bundle in Resources */,
+				93C0CE40292C698A0031BD76 /* Developers.mp4 in Resources */,
 				93725BA72916D8230008BC79 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

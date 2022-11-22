@@ -4,6 +4,7 @@
 import SwiftUI
 import RealmSwift
 import ResponderChain
+import AVKit
 
 // MARK: - Main View
 struct MainView: View {
@@ -21,6 +22,7 @@ struct MainView: View {
     private var searchState: Bool {
         return !searchText.isEmpty
     }
+    private var player = AVPlayer()
     
     /// Local Functions
     private func changeFocusState(_ value: Bool) {
@@ -85,6 +87,9 @@ struct MainView: View {
                         /// Erase Button
                         if !typedText.isEmpty {
                             Button(action: {
+                                if player.currentItem != nil {
+                                    player.replaceCurrentItem(with: nil)
+                                }
                                 touch()
                                 chain.firstResponder = nil
                                 focusState = true
@@ -111,9 +116,31 @@ struct MainView: View {
             }
             
             if searchState {
-                SearchView(searchText: searchText)
-                    .transition(.move(edge: .bottom))
-                    .ignoresSafeArea(.keyboard)
+                if searchText.uppercased() == "DEVELOPERS" {
+                    VideoPlayer(player: player)
+                        .onAppear {
+                            if player.currentItem == nil {
+                                let item = AVPlayerItem(url: Bundle.main.url(forResource: "Developers",
+                                                                             withExtension: "mp4")!)
+                                player.replaceCurrentItem(with: item)
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                player.play()
+                            }
+                        }
+                        .scaledToFit()
+                        .frame(maxHeight: .infinity)
+                        .disabled(true)
+                } else {
+                    SearchView(searchText: searchText)
+                        .transition(.move(edge: .bottom))
+                        .ignoresSafeArea(.keyboard)
+                        .onAppear {
+                            if player.currentItem != nil {
+                                player.replaceCurrentItem(with: nil)
+                            }
+                        }
+                }
             }
             
             // MARK: - Settings

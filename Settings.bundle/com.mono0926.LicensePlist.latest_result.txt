@@ -1,0 +1,23 @@
+name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: , source: https://github.com/Alamofire/Alamofire
+
+name: Kingfisher, nameSpecified: Kingfisher, owner: onevcat, version: 7.4.1, source: https://github.com/onevcat/Kingfisher
+
+name: MarqueeText, nameSpecified: MarqueeText, owner: joekndy, version: , source: https://github.com/joekndy/MarqueeText
+
+name: realm-core, nameSpecified: realm-core, owner: realm, version: 12.11.0, source: https://github.com/realm/realm-core
+
+name: realm-swift, nameSpecified: realm-swift, owner: realm, version: , source: https://github.com/realm/realm-swift
+
+name: ResponderChain, nameSpecified: ResponderChain, owner: Amzd, version: 1.1.2, source: https://github.com/Amzd/ResponderChain
+
+name: swift-collections, nameSpecified: swift-collections, owner: apple, version: 1.0.3, source: https://github.com/apple/swift-collections
+
+name: SwiftSoup, nameSpecified: SwiftSoup, owner: scinfu, version: 2.4.3, source: https://github.com/scinfu/SwiftSoup
+
+name: SwiftUI-Introspect, nameSpecified: Introspect, owner: siteline, version: 0.1.4, source: https://github.com/siteline/SwiftUI-Introspect
+
+name: SwizzleSwift, nameSpecified: SwizzleSwift, owner: Amzd, version: 1.0.0, source: https://github.com/Amzd/SwizzleSwift
+
+add-version-numbers: false
+
+LicensePlist Version: 3.23.4

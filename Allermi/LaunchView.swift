@@ -162,6 +162,7 @@ struct LaunchView: View {
                                 Text(text)
                                     .fontWeight(.bold)
                                     .font(.title3)
+                                    .fixedSize(horizontal: false, vertical: true)
                                     .foregroundColor(.white)
                                     .transition(.scale)
                                     .onAppear {

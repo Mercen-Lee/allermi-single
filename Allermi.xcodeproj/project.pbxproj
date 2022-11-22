@@ -24,6 +24,7 @@
 		93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D7B2918C9950041904B /* SwiftSoup */; };
 		93BDD0CB2919E98C0080B3C1 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 93BDD0CA2919E98C0080B3C1 /* Collections */; };
 		93E8A90F291A11CA009B3FE0 /* DevicePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E8A90E291A11CA009B3FE0 /* DevicePreset.swift */; };
+		93F03A14292C630D00B16803 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 93F03A13292C630D00B16803 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		938501DE2927E7B500BDF157 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		938501E52928059E00BDF157 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93E8A90E291A11CA009B3FE0 /* DevicePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePreset.swift; sourceTree = "<group>"; };
+		93F03A13292C630D00B16803 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		93725B962916D8220008BC79 = {
 			isa = PBXGroup;
 			children = (
+				93F03A13292C630D00B16803 /* Settings.bundle */,
 				938501E52928059E00BDF157 /* README.md */,
 				93725BA12916D8220008BC79 /* Allermi */,
 				93725BA02916D8220008BC79 /* Products */,
@@ -219,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93F03A14292C630D00B16803 /* Settings.bundle in Resources */,
 				93725BA72916D8230008BC79 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

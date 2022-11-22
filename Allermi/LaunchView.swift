@@ -25,13 +25,12 @@ struct LaunchView: View {
     
     /// Local Functions
     // MARK: - Update Animation
-    private func updateAnimationStatus(time: CGFloat) {
-        DispatchQueue.main.asyncAfter(
-            deadline: .now() + time, execute: {
-                withAnimation(springAnimation) {
-                    animationStatus += 1
-                }
-            })
+    private func updateAnimationStatus() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            withAnimation(springAnimation) {
+                animationStatus += 1
+            }
+        }
     }
     
     // MARK: - Decoding EUC-KR Data to UTF-8
@@ -164,7 +163,7 @@ struct LaunchView: View {
                                     .foregroundColor(.white)
                                     .transition(.scale)
                                     .onAppear {
-                                        updateAnimationStatus(time: 0.1)
+                                        updateAnimationStatus()
                                     }
                             }
                         }
@@ -179,7 +178,11 @@ struct LaunchView: View {
                         .transition(.scale)
                         .onAppear {
                             initFunction()
-                            updateAnimationStatus(time: 1.3)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+                                withAnimation(.spring(dampingFraction: 1, blendDuration: 0.5)) {
+                                    animationStatus += 1
+                                }
+                            }
                         }
                     
                     // MARK: - Loading

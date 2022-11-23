@@ -83,17 +83,11 @@ struct SearchView: View {
                                         .frame(width: 70, height: 70)
                                         .background(Color(.systemBackground).opacity(0.5))
                                         .clipShape(RoundedRectangle(cornerRadius: 10))
+                                        .matchedGeometryEffect(id: "\(data.productNumber) image", in: animation)
                                     
                                     /// Allergy Informations
                                     VStack(alignment: .leading, spacing: 0) {
                                         ZStack {
-                                            HStack {
-                                                Text(data.productName)
-                                                    .font(.title2)
-                                                    .matchedGeometryEffect(id: "\(data.productNumber) text", in: animation)
-                                                    .hidden()
-                                                Spacer()
-                                            }
                                             MarqueeText(
                                                 text: data.productName,
                                                 font: UIFont.boldSystemFont(ofSize: 22),
@@ -101,6 +95,7 @@ struct SearchView: View {
                                                 rightFade: 5,
                                                 startDelay: 2
                                             )
+                                            .matchedGeometryEffect(id: "\(data.productNumber) text", in: animation)
                                         }
                                         MarqueeText(
                                             text: hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음",
@@ -114,9 +109,7 @@ struct SearchView: View {
                                 }
                                 .padding(15)
                                 .frame(maxWidth: .infinity)
-                                .background(hasAllergy(Array(data.allergyList)) == nil ?
-                                            Color.gray.opacity(0.2) :
-                                                Color.accentColor.opacity(0.6))
+                                .background(hasAllergy(Array(data.allergyList)) == nil ? .grayColor : .lightColor)
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
                                 .padding([.top, .leading, .trailing], 15)
                                 .matchedGeometryEffect(id: "\(data.productNumber) container", in: animation)

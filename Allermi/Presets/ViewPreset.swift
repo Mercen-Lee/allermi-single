@@ -25,6 +25,7 @@ extension AnyTransition {
 // MARK: - Color Extension
 extension Color {
     static let lightColor = Color("LightColor")
+    static let grayColor = Color("GrayColor")
 }
 
 // MARK: - Button Style

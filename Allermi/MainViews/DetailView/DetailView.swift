@@ -3,6 +3,7 @@
 
 import SwiftUI
 import MarqueeText
+import Kingfisher
 
 // MARK: - Detail View
 struct DetailView: View {
@@ -22,9 +23,31 @@ struct DetailView: View {
     }
     
     var body: some View {
+        
+        // MARK: - Head
         VStack(alignment: .leading, spacing: 30) {
-            HStack {
-                Spacer()
+            ZStack(alignment: .topTrailing) {
+                
+                // MARK: - Image
+                KFImage(URL(string: data.imageURL))
+                    .placeholder {
+                        Image(systemName: "fork.knife.circle.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(Color(.systemBackground))
+                    }
+                    .retry(maxCount: 3, interval: .seconds(5))
+                    .cacheMemoryOnly()
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 200)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+                    .background(Color(.systemBackground).opacity(0.5))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .matchedGeometryEffect(id: namespacer("image"), in: animation)
+                
+                // MARK: - Exit Button
                 Button(action: {
                     touch()
                     withAnimation(springAnimation) {
@@ -36,16 +59,19 @@ struct DetailView: View {
                         .foregroundColor(.accentColor)
                 }
                 .scaleButton()
+                .padding(15)
             }
-            Text(data.productName)
-                .font(.title)
-                .fontWeight(.bold)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(maxWidth: .infinity)
-                .matchedGeometryEffect(id: namespacer("text"), in: animation)
+            MarqueeText(
+                text: data.productName,
+                font: UIFont.boldSystemFont(ofSize: 30),
+                leftFade: 5,
+                rightFade: 5,
+                startDelay: 2
+            )
+            .matchedGeometryEffect(id: namespacer("text"), in: animation)
             Spacer()
         }
-        .padding(15)
+        .padding(30)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .matchedGeometryEffect(id: namespacer("container"), in: animation)
     }

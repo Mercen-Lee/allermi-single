@@ -83,6 +83,7 @@ struct SearchView: View {
                                             .frame(width: 70, height: 70)
                                             .background(Color(.systemBackground).opacity(0.5))
                                             .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            .matchedGeometryEffect(id: "\(data.productNumber) image", in: animation)
                                         
                                         /// Allergy Informations
                                         VStack(alignment: .leading, spacing: 0) {
@@ -93,6 +94,7 @@ struct SearchView: View {
                                                 rightFade: 5,
                                                 startDelay: 2
                                             )
+                                            .matchedGeometryEffect(id: "\(data.productNumber) title", in: animation)
                                             MarqueeText(
                                                 text: hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음",
                                                 font: UIFont.preferredFont(forTextStyle: .body),
@@ -100,11 +102,9 @@ struct SearchView: View {
                                                 rightFade: 5,
                                                 startDelay: 2
                                             )
+                                            .matchedGeometryEffect(id: "\(data.productNumber) desc", in: animation)
                                         }
                                         Spacer()
-                                    }
-                                    if selected == data.productNumber {
-                                        Text("aaa")
                                     }
                                 }
                                 .padding(15)
@@ -122,14 +122,16 @@ struct SearchView: View {
             }
             .mask(
                 VStack(spacing: 0) {
-                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.5), .black]),
-                                   startPoint: .top,
-                                   endPoint: .bottom
-                    )
-                    .frame(height: 15)
+                    if selected == -1 {
+                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.6), .black]),
+                                       startPoint: .top,
+                                       endPoint: .bottom
+                        )
+                        .frame(height: 15)
+                    }
                     Rectangle()
                         .fill(Color.black)
-                        .ignoresSafeArea(edges: .bottom)
+                        .ignoresSafeArea()
                 }
             )
         }

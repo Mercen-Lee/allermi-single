@@ -12,10 +12,10 @@ struct MainView: View {
     /// State Variables
     @State private var keyboardState: Bool = false
     @State private var focusState: Bool = false
-    @State private var detailState: Bool = false
     @State private var settings: Bool = false
     @State private var typedText: String = String()
     @State private var searchText: String = String()
+    @State var selected: Int = -1
     
     /// Local Variables
     private var searchState: Bool {
@@ -51,8 +51,9 @@ struct MainView: View {
                 }
                 
                 // MARK: - Text Input
-                if !detailState {
+                if selected == -1 {
                     ZStack {
+                        
                         
                         /// Placeholder
                         if typedText.isEmpty && !searchState && !focusState {
@@ -119,34 +120,34 @@ struct MainView: View {
                         keyboardState = true
                     }
                 }
-            }
-            
-            if searchState {
-                if searchText.uppercased() == "DEVELOPERS" {
-                    VideoPlayer(player: player)
-                        .onAppear {
-                            if player.currentItem == nil {
-                                let item = AVPlayerItem(url: Bundle.main.url(forResource: "Developers",
-                                                                             withExtension: "mp4")!)
-                                player.replaceCurrentItem(with: item)
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                player.play()
-                            }
+        }
+        
+        if searchState {
+            if searchText.uppercased() == "DEVELOPERS" {
+                VideoPlayer(player: player)
+                    .onAppear {
+                        if player.currentItem == nil {
+                            let item = AVPlayerItem(url: Bundle.main.url(forResource: "Developers",
+                                                                         withExtension: "mp4")!)
+                            player.replaceCurrentItem(with: item)
                         }
-                        .scaledToFit()
-                        .frame(maxHeight: .infinity)
-                        .disabled(true)
-                } else {
-                    SearchView(detailState: $detailState, searchText: searchText)
-                        .transition(.move(edge: .bottom)
-                            .combined(with: .opacity))
-                        .ignoresSafeArea(.keyboard)
-                        .onAppear {
-                            if player.currentItem != nil {
-                                player.replaceCurrentItem(with: nil)
-                            }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            player.play()
                         }
+                    }
+                    .scaledToFit()
+                    .frame(maxHeight: .infinity)
+                    .disabled(true)
+            } else {
+                SearchView(selected: $selected, searchText: searchText)
+                    .transition(.move(edge: .bottom)
+                        .combined(with: .opacity))
+                    .ignoresSafeArea(.keyboard)
+                    .onAppear {
+                        if player.currentItem != nil {
+                            player.replaceCurrentItem(with: nil)
+                        }
+                    }
                 }
             }
             

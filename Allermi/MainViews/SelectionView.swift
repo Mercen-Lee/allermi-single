@@ -67,7 +67,7 @@ struct SelectionView: View {
         } else if relatedAllergy.contains(value) {
             return .lightColor
         } else {
-            return .gray.opacity(0.4)
+            return .grayColor
         }
     }
 
@@ -196,6 +196,7 @@ struct SelectionView: View {
                         .background(Color.accentColor)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                 }
+                .scaleButton()
                 .disabled(selectedAllergy.isEmpty)
             }
         }

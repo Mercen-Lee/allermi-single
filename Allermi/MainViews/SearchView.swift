@@ -65,47 +65,44 @@ struct SearchView: View {
                                         }
                                     }
                                 }) {
-                                    VStack {
-                                        HStack(spacing: 15) {
-                                            
-                                            /// Food Image
-                                            KFImage(URL(string: data.imageURL))
-                                                .placeholder {
-                                                    Image(systemName: "fork.knife.circle.fill")
-                                                        .resizable()
-                                                        .frame(width: 40, height: 40)
-                                                        .foregroundColor(Color(.systemBackground))
-                                                }
-                                                .retry(maxCount: 3, interval: .seconds(5))
-                                                .cancelOnDisappear(true)
-                                                .cacheMemoryOnly()
-                                                .resizable()
-                                                .scaledToFill()
-                                                .frame(width: 70, height: 70)
-                                                .background(Color(.systemBackground).opacity(0.5))
-                                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                .matchedGeometryEffect(id: "\(data.productNumber) image", in: animation)
-                                            
-                                            /// Allergy Informations
-                                            VStack(alignment: .leading, spacing: 0) {
-                                                MarqueeText(
-                                                    text: data.productName,
-                                                    font: UIFont.boldSystemFont(ofSize: 22),
-                                                    leftFade: 5,
-                                                    rightFade: 5,
-                                                    startDelay: 2
-                                                )
-                                                .matchedGeometryEffect(id: "\(data.productNumber) title", in: animation)
-                                                MarqueeText(
-                                                    text: hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음",
-                                                    font: UIFont.preferredFont(forTextStyle: .body),
-                                                    leftFade: 5,
-                                                    rightFade: 5,
-                                                    startDelay: 2
-                                                )
-                                                .matchedGeometryEffect(id: "\(data.productNumber) desc", in: animation)
+                                    HStack(spacing: 15) {
+                                        
+                                        /// Food Image
+                                        KFImage(URL(string: data.imageURL))
+                                            .placeholder {
+                                                Image(systemName: "fork.knife.circle.fill")
+                                                    .resizable()
+                                                    .frame(width: 40, height: 40)
+                                                    .foregroundColor(Color(.systemBackground))
                                             }
-                                            Spacer()
+                                            .retry(maxCount: 3, interval: .seconds(5))
+                                            .cancelOnDisappear(true)
+                                            .cacheMemoryOnly()
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 70, height: 70)
+                                            .background(Color(.systemBackground).opacity(0.5))
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            .matchedGeometryEffect(id: "\(data.productNumber) image", in: animation)
+                                        
+                                        /// Allergy Informations
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            MarqueeText(
+                                                text: data.productName,
+                                                font: UIFont.boldSystemFont(ofSize: 22),
+                                                leftFade: 5,
+                                                rightFade: 5,
+                                                startDelay: 2
+                                            )
+                                            .matchedGeometryEffect(id: "\(data.productNumber) title", in: animation)
+                                            MarqueeText(
+                                                text: hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음",
+                                                font: UIFont.preferredFont(forTextStyle: .body),
+                                                leftFade: 5,
+                                                rightFade: 5,
+                                                startDelay: 2
+                                            )
+                                            .matchedGeometryEffect(id: "\(data.productNumber) desc", in: animation)
                                         }
                                     }
                                     .customContainer(hasAllergy(Array(data.allergyList)) == nil ? .grayColor : .lightColor)
@@ -114,10 +111,12 @@ struct SearchView: View {
                                 .scaleButton()
                             }
                             if selected == data.productNumber {
-                                Text(data.companyName)
-                                    .frame(maxWidth: .infinity)
-                                    .multilineTextAlignment(.leading)
-                                    .customContainer()
+                                ForEach([data.companyName, data.ingredients, data.nutrient], id: \.self) { text in
+                                    Text(text)
+                                        .multilineTextAlignment(.leading)
+                                        .font(.caption)
+                                        .customContainer()
+                                }
                             }
                         }
                     }

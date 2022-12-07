@@ -11,7 +11,10 @@ extension View {
     }
     
     @ViewBuilder func customContainer(_ background: Color = .grayColor) -> some View {
-        self
+        HStack {
+            self
+            Spacer()
+        }
             .padding(15)
             .frame(maxWidth: .infinity)
             .background(background)

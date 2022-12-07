@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930478A729415F0E0002DB14 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 930478A629415F0E0002DB14 /* SDWebImageSwiftUI */; };
 		932730B02929C20E00691DF3 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932730AF2929C20E00691DF3 /* SelectionView.swift */; };
 		93725BA32916D8220008BC79 /* AllermiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA22916D8220008BC79 /* AllermiApp.swift */; };
 		93725BA52916D8220008BC79 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA42916D8220008BC79 /* MainView.swift */; };
@@ -18,7 +19,6 @@
 		93725BBF2916D9A40008BC79 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 93725BBE2916D9A40008BC79 /* Alamofire */; };
 		938501D82927DD1300BDF157 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938501D72927DD1300BDF157 /* SearchView.swift */; };
 		938501DD2927E6D200BDF157 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 938501DC2927E6D200BDF157 /* Kingfisher */; };
-		938501E12927EFCC00BDF157 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = 938501E02927EFCC00BDF157 /* MarqueeText */; };
 		93940F91292CE609009E6CB7 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 93940F90292CE609009E6CB7 /* SwiftUIX */; };
 		93B33D79291877550041904B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D78291877550041904B /* RealmSwift */; };
 		93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 93B33D7B2918C9950041904B /* SwiftSoup */; };
@@ -51,13 +51,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				930478A729415F0E0002DB14 /* SDWebImageSwiftUI in Frameworks */,
 				938501DD2927E6D200BDF157 /* Kingfisher in Frameworks */,
 				93B33D79291877550041904B /* RealmSwift in Frameworks */,
 				93940F91292CE609009E6CB7 /* SwiftUIX in Frameworks */,
 				93BDD0CB2919E98C0080B3C1 /* Collections in Frameworks */,
 				93725BBF2916D9A40008BC79 /* Alamofire in Frameworks */,
 				93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */,
-				938501E12927EFCC00BDF157 /* MarqueeText in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,8 +155,8 @@
 				93B33D7B2918C9950041904B /* SwiftSoup */,
 				93BDD0CA2919E98C0080B3C1 /* Collections */,
 				938501DC2927E6D200BDF157 /* Kingfisher */,
-				938501E02927EFCC00BDF157 /* MarqueeText */,
 				93940F90292CE609009E6CB7 /* SwiftUIX */,
+				930478A629415F0E0002DB14 /* SDWebImageSwiftUI */,
 			);
 			productName = Allermi;
 			productReference = 93725B9F2916D8220008BC79 /* Allermi.app */;
@@ -192,8 +192,8 @@
 				93B33D7A2918C9950041904B /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				93BDD0C92919E98C0080B3C1 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				938501DB2927E6D200BDF157 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				938501DF2927EFCC00BDF157 /* XCRemoteSwiftPackageReference "MarqueeText" */,
 				93940F8F292CE609009E6CB7 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				930478A529415F0E0002DB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 93725BA02916D8220008BC79 /* Products */;
 			projectDirPath = "";
@@ -439,6 +439,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		930478A529415F0E0002DB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -453,14 +461,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.0.0;
-			};
-		};
-		938501DF2927EFCC00BDF157 /* XCRemoteSwiftPackageReference "MarqueeText" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/joekndy/MarqueeText";
-			requirement = {
-				branch = master;
-				kind = branch;
 			};
 		};
 		93940F8F292CE609009E6CB7 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
@@ -498,6 +498,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		930478A629415F0E0002DB14 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 930478A529415F0E0002DB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		93725BBE2916D9A40008BC79 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -507,11 +512,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 938501DB2927E6D200BDF157 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		938501E02927EFCC00BDF157 /* MarqueeText */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 938501DF2927EFCC00BDF157 /* XCRemoteSwiftPackageReference "MarqueeText" */;
-			productName = MarqueeText;
 		};
 		93940F90292CE609009E6CB7 /* SwiftUIX */ = {
 			isa = XCSwiftPackageProductDependency;

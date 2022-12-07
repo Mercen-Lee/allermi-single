@@ -4,7 +4,6 @@
 import SwiftUI
 import RealmSwift
 import Kingfisher
-import MarqueeText
 
 // MARK: - Search View
 struct SearchView: View {
@@ -52,13 +51,13 @@ struct SearchView: View {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ForEach(allergyData, id: \.self) { data in
-                        VStack {
+                        VStack(spacing: 0) {
                             if selected == -1 || selected == data.productNumber {
                                 // MARK: - Data Cell
                                 Button(action: {
                                     touch()
                                     withAnimation(springAnimation) {
-                                        if selected == data.productNumber {
+                                        if selected != -1 {
                                             selected = -1
                                         } else {
                                             selected = data.productNumber
@@ -83,26 +82,13 @@ struct SearchView: View {
                                             .frame(width: 70, height: 70)
                                             .background(Color(.systemBackground).opacity(0.5))
                                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            .matchedGeometryEffect(id: "\(data.productNumber) image", in: animation)
                                         
                                         /// Allergy Informations
                                         VStack(alignment: .leading, spacing: 0) {
-                                            MarqueeText(
-                                                text: data.productName,
-                                                font: UIFont.boldSystemFont(ofSize: 22),
-                                                leftFade: 5,
-                                                rightFade: 5,
-                                                startDelay: 2
-                                            )
-                                            .matchedGeometryEffect(id: "\(data.productNumber) title", in: animation)
-                                            MarqueeText(
-                                                text: hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음",
-                                                font: UIFont.preferredFont(forTextStyle: .body),
-                                                leftFade: 5,
-                                                rightFade: 5,
-                                                startDelay: 2
-                                            )
-                                            .matchedGeometryEffect(id: "\(data.productNumber) desc", in: animation)
+                                            Text(data.productName)
+                                                .font(.title2)
+                                                .fontWeight(.bold)
+                                            Text(hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음")
                                         }
                                     }
                                     .customContainer(hasAllergy(Array(data.allergyList)) == nil ? .grayColor : .lightColor)

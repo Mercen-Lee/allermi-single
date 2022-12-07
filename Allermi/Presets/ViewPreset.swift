@@ -9,6 +9,15 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                         to: nil, from: nil, for: nil)
     }
+    
+    @ViewBuilder func customContainer(_ background: Color = .grayColor) -> some View {
+        self
+            .padding(15)
+            .frame(maxWidth: .infinity)
+            .background(background)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .padding([.top, .leading, .trailing], 15)
+    }
 }
 
 public let springAnimation: Animation = .spring(dampingFraction: 0.75, blendDuration: 0.5)

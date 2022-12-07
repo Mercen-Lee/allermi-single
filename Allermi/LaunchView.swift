@@ -210,6 +210,7 @@ struct LaunchView: View {
                                 .fontWeight(.bold)
                                 .padding()
                                 .frame(maxWidth: .infinity)
+                                .foregroundColor(.accentColor)
                                 .background(Color.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
                         }

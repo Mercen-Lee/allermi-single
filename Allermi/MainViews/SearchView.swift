@@ -52,69 +52,73 @@ struct SearchView: View {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ForEach(allergyData, id: \.self) { data in
-                        if selected == -1 || selected == data.productNumber {
-                            // MARK: - Data Cell
-                            Button(action: {
-                                touch()
-                                withAnimation(springAnimation) {
-                                    if selected == data.productNumber {
-                                        selected = -1
-                                    } else {
-                                        selected = data.productNumber
-                                    }
-                                }
-                            }) {
-                                VStack {
-                                    HStack(spacing: 15) {
-                                        
-                                        /// Food Image
-                                        KFImage(URL(string: data.imageURL))
-                                            .placeholder {
-                                                Image(systemName: "fork.knife.circle.fill")
-                                                    .resizable()
-                                                    .frame(width: 40, height: 40)
-                                                    .foregroundColor(Color(.systemBackground))
-                                            }
-                                            .retry(maxCount: 3, interval: .seconds(5))
-                                            .cancelOnDisappear(true)
-                                            .cacheMemoryOnly()
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 70, height: 70)
-                                            .background(Color(.systemBackground).opacity(0.5))
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            .matchedGeometryEffect(id: "\(data.productNumber) image", in: animation)
-                                        
-                                        /// Allergy Informations
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            MarqueeText(
-                                                text: data.productName,
-                                                font: UIFont.boldSystemFont(ofSize: 22),
-                                                leftFade: 5,
-                                                rightFade: 5,
-                                                startDelay: 2
-                                            )
-                                            .matchedGeometryEffect(id: "\(data.productNumber) title", in: animation)
-                                            MarqueeText(
-                                                text: hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음",
-                                                font: UIFont.preferredFont(forTextStyle: .body),
-                                                leftFade: 5,
-                                                rightFade: 5,
-                                                startDelay: 2
-                                            )
-                                            .matchedGeometryEffect(id: "\(data.productNumber) desc", in: animation)
+                        VStack {
+                            if selected == -1 || selected == data.productNumber {
+                                // MARK: - Data Cell
+                                Button(action: {
+                                    touch()
+                                    withAnimation(springAnimation) {
+                                        if selected == data.productNumber {
+                                            selected = -1
+                                        } else {
+                                            selected = data.productNumber
                                         }
-                                        Spacer()
                                     }
+                                }) {
+                                    VStack {
+                                        HStack(spacing: 15) {
+                                            
+                                            /// Food Image
+                                            KFImage(URL(string: data.imageURL))
+                                                .placeholder {
+                                                    Image(systemName: "fork.knife.circle.fill")
+                                                        .resizable()
+                                                        .frame(width: 40, height: 40)
+                                                        .foregroundColor(Color(.systemBackground))
+                                                }
+                                                .retry(maxCount: 3, interval: .seconds(5))
+                                                .cancelOnDisappear(true)
+                                                .cacheMemoryOnly()
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 70, height: 70)
+                                                .background(Color(.systemBackground).opacity(0.5))
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                .matchedGeometryEffect(id: "\(data.productNumber) image", in: animation)
+                                            
+                                            /// Allergy Informations
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                MarqueeText(
+                                                    text: data.productName,
+                                                    font: UIFont.boldSystemFont(ofSize: 22),
+                                                    leftFade: 5,
+                                                    rightFade: 5,
+                                                    startDelay: 2
+                                                )
+                                                .matchedGeometryEffect(id: "\(data.productNumber) title", in: animation)
+                                                MarqueeText(
+                                                    text: hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음",
+                                                    font: UIFont.preferredFont(forTextStyle: .body),
+                                                    leftFade: 5,
+                                                    rightFade: 5,
+                                                    startDelay: 2
+                                                )
+                                                .matchedGeometryEffect(id: "\(data.productNumber) desc", in: animation)
+                                            }
+                                            Spacer()
+                                        }
+                                    }
+                                    .customContainer(hasAllergy(Array(data.allergyList)) == nil ? .grayColor : .lightColor)
+                                    .matchedGeometryEffect(id: "\(data.productNumber) container", in: animation)
                                 }
-                                .padding(15)
-                                .frame(maxWidth: .infinity)
-                                .background(hasAllergy(Array(data.allergyList)) == nil ? .grayColor : .lightColor)
-                                .clipShape(RoundedRectangle(cornerRadius: 15))
-                                .padding([.top, .leading, .trailing], 15)
-                                .matchedGeometryEffect(id: "\(data.productNumber) container", in: animation)
+                                .scaleButton()
                             }
-                            .scaleButton()
+                            if selected == data.productNumber {
+                                Text(data.companyName)
+                                    .frame(maxWidth: .infinity)
+                                    .multilineTextAlignment(.leading)
+                                    .customContainer()
+                            }
                         }
                     }
                 }

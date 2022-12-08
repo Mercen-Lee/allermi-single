@@ -14,6 +14,7 @@ struct LaunchView: View {
     @State private var dataLoadStatus: Bool = false
     @State private var errorOccurred: Bool = false
     @State private var registering: Bool = false
+    @State private var information: Bool = false
     
     /// Static Variables
     private let algorithm: Character = "A"
@@ -141,8 +142,9 @@ struct LaunchView: View {
             
         } else if registering {
             
-            SelectionView(selection: $registering)
+            SelectionView(selection: $registering, information: $information)
                 .padding(30)
+                .customModal($information)
                 .zIndex(-1)
                 .transition(.backslide)
             

@@ -13,6 +13,7 @@ struct MainView: View {
     @State private var keyboardState: Bool = false
     @State private var focusState: Bool = false
     @State private var settings: Bool = false
+    @State private var information: Bool = false
     @State private var typedText: String = String()
     @State private var searchText: String = String()
     
@@ -153,7 +154,7 @@ struct MainView: View {
                 Spacer()
                 ZStack {
                     if settings {
-                        SelectionView(selection: $settings)
+                        SelectionView(selection: $settings, information: $information)
                             .transition(.move(edge: .bottom)
                                 .combined(with: .opacity))
                     }
@@ -188,6 +189,7 @@ struct MainView: View {
         }
         .padding(searchState ? 0 : 30)
         .background(Color(.systemBackground).ignoresSafeArea())
+        .customModal($information)
         .onTapGesture {
             endTextEditing()
             keyboardState = false

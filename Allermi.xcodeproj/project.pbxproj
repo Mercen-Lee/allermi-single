@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		930478AC294162660002DB14 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930478AB294162660002DB14 /* DetailView.swift */; };
+		930478E52941DD640002DB14 /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = 930478E42941DD640002DB14 /* SlideOverCard */; };
 		932730B02929C20E00691DF3 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932730AF2929C20E00691DF3 /* SelectionView.swift */; };
 		93725BA32916D8220008BC79 /* AllermiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA22916D8220008BC79 /* AllermiApp.swift */; };
 		93725BA52916D8220008BC79 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA42916D8220008BC79 /* MainView.swift */; };
@@ -56,6 +57,7 @@
 				93B33D79291877550041904B /* RealmSwift in Frameworks */,
 				93940F91292CE609009E6CB7 /* SwiftUIX in Frameworks */,
 				93BDD0CB2919E98C0080B3C1 /* Collections in Frameworks */,
+				930478E52941DD640002DB14 /* SlideOverCard in Frameworks */,
 				93725BBF2916D9A40008BC79 /* Alamofire in Frameworks */,
 				93B33D7C2918C9950041904B /* SwiftSoup in Frameworks */,
 			);
@@ -90,7 +92,7 @@
 				93725BA22916D8220008BC79 /* AllermiApp.swift */,
 				93725BB02916D89D0008BC79 /* LaunchView.swift */,
 				93725BB22916D8B90008BC79 /* Presets */,
-				93725BB52916D9480008BC79 /* MainViews */,
+				93725BB52916D9480008BC79 /* Views */,
 				93725BB82916D9740008BC79 /* Allergy */,
 				93725BA62916D8230008BC79 /* Assets.xcassets */,
 				93725BA82916D8230008BC79 /* Preview Content */,
@@ -114,15 +116,15 @@
 			path = Presets;
 			sourceTree = "<group>";
 		};
-		93725BB52916D9480008BC79 /* MainViews */ = {
+		93725BB52916D9480008BC79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				93725BA42916D8220008BC79 /* MainView.swift */,
 				932730AF2929C20E00691DF3 /* SelectionView.swift */,
+				93725BA42916D8220008BC79 /* MainView.swift */,
 				938501D72927DD1300BDF157 /* SearchView.swift */,
 				930478AB294162660002DB14 /* DetailView.swift */,
 			);
-			path = MainViews;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		93725BB82916D9740008BC79 /* Allergy */ = {
@@ -157,6 +159,7 @@
 				93BDD0CA2919E98C0080B3C1 /* Collections */,
 				938501DC2927E6D200BDF157 /* Kingfisher */,
 				93940F90292CE609009E6CB7 /* SwiftUIX */,
+				930478E42941DD640002DB14 /* SlideOverCard */,
 			);
 			productName = Allermi;
 			productReference = 93725B9F2916D8220008BC79 /* Allermi.app */;
@@ -193,6 +196,7 @@
 				93BDD0C92919E98C0080B3C1 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				938501DB2927E6D200BDF157 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				93940F8F292CE609009E6CB7 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				930478E32941DD640002DB14 /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 			);
 			productRefGroup = 93725BA02916D8220008BC79 /* Products */;
 			projectDirPath = "";
@@ -439,6 +443,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		930478E32941DD640002DB14 /* XCRemoteSwiftPackageReference "SlideOverCard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joogps/SlideOverCard";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -490,6 +502,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		930478E42941DD640002DB14 /* SlideOverCard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 930478E32941DD640002DB14 /* XCRemoteSwiftPackageReference "SlideOverCard" */;
+			productName = SlideOverCard;
+		};
 		93725BBE2916D9A40008BC79 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */;

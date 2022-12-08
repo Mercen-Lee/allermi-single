@@ -2,6 +2,7 @@
 /// Created by Mercen on 2022/11/03.
 
 import SwiftUI
+import SlideOverCard
 
 // MARK: - View Extension
 extension View {
@@ -20,6 +21,12 @@ extension View {
             .background(background)
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .padding([.top, .leading, .trailing], 15)
+    }
+    @ViewBuilder func customModal(_ information: Binding<Bool>) -> some View {
+        self
+            .slideOverCard(isPresented: information) {
+                
+            }
     }
 }
 

@@ -4,16 +4,17 @@
 import SwiftUI
 import Collections
 
-// MARK: - Settings View
+// MARK: - Selection View
 struct SelectionView: View {
     
     /// Bindings
     @Binding var selection: Bool
+    @Binding var information: Bool
     
     /// State Variables
     @State private var selectedAllergy: [String] = [String]()
     @State private var title: String = String()
-    
+
     /// Static Variables
     private let allergyList: OrderedDictionary = ["난류": ["달걀", "계란", "메추리알"],
                                                   "육류": ["소고기", "쇠고기", "돼지고기"],
@@ -176,7 +177,16 @@ struct SelectionView: View {
                     .padding(.top, 50)
                 
                 // MARK: - Subtitle
-                Text("보유하고 계신 알레르기를 선택해주세요.")
+                HStack {
+                    Text("보유하고 계신 알레르기를 선택해주세요.")
+                    Button(action: {
+                        information.toggle()
+                    }) {
+                        Image(systemName: "info.circle.fill")
+                            .foregroundColor(.accentColor)
+                    }
+                    .scaleButton()
+                }
                 
                 Spacer()
                 

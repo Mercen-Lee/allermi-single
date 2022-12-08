@@ -74,8 +74,8 @@ struct MainView: View {
                                 focusState = editingChanged
                             }
                         }, onCommit: {
+                            keyboardState = false
                             if !typedText.isEmpty {
-                                keyboardState = false
                                 withAnimation(springAnimation) {
                                     searchText = typedText
                                 }

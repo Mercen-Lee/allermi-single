@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		930478A729415F0E0002DB14 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 930478A629415F0E0002DB14 /* SDWebImageSwiftUI */; };
+		930478AC294162660002DB14 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930478AB294162660002DB14 /* DetailView.swift */; };
 		932730B02929C20E00691DF3 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932730AF2929C20E00691DF3 /* SelectionView.swift */; };
 		93725BA32916D8220008BC79 /* AllermiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA22916D8220008BC79 /* AllermiApp.swift */; };
 		93725BA52916D8220008BC79 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA42916D8220008BC79 /* MainView.swift */; };
@@ -29,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		930478AB294162660002DB14 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		932730AF2929C20E00691DF3 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		93725B9F2916D8220008BC79 /* Allermi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Allermi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93725BA22916D8220008BC79 /* AllermiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllermiApp.swift; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				930478A729415F0E0002DB14 /* SDWebImageSwiftUI in Frameworks */,
 				938501DD2927E6D200BDF157 /* Kingfisher in Frameworks */,
 				93B33D79291877550041904B /* RealmSwift in Frameworks */,
 				93940F91292CE609009E6CB7 /* SwiftUIX in Frameworks */,
@@ -120,6 +120,7 @@
 				93725BA42916D8220008BC79 /* MainView.swift */,
 				932730AF2929C20E00691DF3 /* SelectionView.swift */,
 				938501D72927DD1300BDF157 /* SearchView.swift */,
+				930478AB294162660002DB14 /* DetailView.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -156,7 +157,6 @@
 				93BDD0CA2919E98C0080B3C1 /* Collections */,
 				938501DC2927E6D200BDF157 /* Kingfisher */,
 				93940F90292CE609009E6CB7 /* SwiftUIX */,
-				930478A629415F0E0002DB14 /* SDWebImageSwiftUI */,
 			);
 			productName = Allermi;
 			productReference = 93725B9F2916D8220008BC79 /* Allermi.app */;
@@ -193,7 +193,6 @@
 				93BDD0C92919E98C0080B3C1 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				938501DB2927E6D200BDF157 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				93940F8F292CE609009E6CB7 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
-				930478A529415F0E0002DB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 93725BA02916D8220008BC79 /* Products */;
 			projectDirPath = "";
@@ -225,6 +224,7 @@
 				938501D82927DD1300BDF157 /* SearchView.swift in Sources */,
 				93725BA52916D8220008BC79 /* MainView.swift in Sources */,
 				93725BB42916D8C70008BC79 /* ViewPreset.swift in Sources */,
+				930478AC294162660002DB14 /* DetailView.swift in Sources */,
 				93725BBC2916D9870008BC79 /* AllergyData.swift in Sources */,
 				93725BB12916D89D0008BC79 /* LaunchView.swift in Sources */,
 				93E8A90F291A11CA009B3FE0 /* DevicePreset.swift in Sources */,
@@ -439,14 +439,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		930478A529415F0E0002DB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -498,11 +490,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		930478A629415F0E0002DB14 /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 930478A529415F0E0002DB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
-		};
 		93725BBE2916D9A40008BC79 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 93725BBD2916D9A40008BC79 /* XCRemoteSwiftPackageReference "Alamofire" */;

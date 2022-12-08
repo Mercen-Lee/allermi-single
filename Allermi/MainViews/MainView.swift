@@ -15,7 +15,6 @@ struct MainView: View {
     @State private var settings: Bool = false
     @State private var typedText: String = String()
     @State private var searchText: String = String()
-    @State var selected: Int = -1
     
     /// Local Variables
     private var searchState: Bool {
@@ -51,76 +50,73 @@ struct MainView: View {
                 }
                 
                 // MARK: - Text Input
-                if selected == -1 {
-                    ZStack {
+                ZStack {
+                    
+                    /// Placeholder
+                    if typedText.isEmpty && !searchState && !focusState {
+                        Text("식품명을 입력해 검색하세요")
+                            .foregroundColor(.gray)
+                    }
+                    
+                    /// Text Container
+                    HStack {
                         
-                        
-                        /// Placeholder
-                        if typedText.isEmpty && !searchState && !focusState {
-                            Text("식품명을 입력해 검색하세요")
-                                .foregroundColor(.gray)
-                        }
-                        
-                        /// Text Container
-                        HStack {
-                            
-                            if !searchState {
-                                Spacer()
-                            }
-                            
-                            /// Text Field
-                            CocoaTextField("", text: $typedText, onEditingChanged: { editingChanged in
-                                if focusState {
-                                    changeFocusState(editingChanged)
-                                } else {
-                                    focusState = editingChanged
-                                }
-                            }, onCommit: {
-                                if !typedText.isEmpty {
-                                    keyboardState = false
-                                    withAnimation(springAnimation) {
-                                        searchText = typedText
-                                    }
-                                }
-                            })
-                            .isFirstResponder(keyboardState)
-                            .multilineTextAlignment(.leading)
-                            .fixedSize()
+                        if !searchState {
                             Spacer()
-                            
-                            /// Erase Button
+                        }
+                        
+                        /// Text Field
+                        CocoaTextField("", text: $typedText, onEditingChanged: { editingChanged in
+                            if focusState {
+                                changeFocusState(editingChanged)
+                            } else {
+                                focusState = editingChanged
+                            }
+                        }, onCommit: {
                             if !typedText.isEmpty {
-                                Button(action: {
-                                    if player.currentItem != nil {
-                                        player.replaceCurrentItem(with: nil)
-                                    }
-                                    touch()
-                                    keyboardState = false
-                                    focusState = true
-                                    changeFocusState(false)
-                                    withAnimation(springAnimation) {
-                                        typedText = String()
-                                        searchText = String()
-                                    }
-                                }) {
-                                    Image(systemName: "xmark.circle.fill")
+                                keyboardState = false
+                                withAnimation(springAnimation) {
+                                    searchText = typedText
                                 }
                             }
+                        })
+                        .isFirstResponder(keyboardState)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize()
+                        Spacer()
+                        
+                        /// Erase Button
+                        if !typedText.isEmpty {
+                            Button(action: {
+                                if player.currentItem != nil {
+                                    player.replaceCurrentItem(with: nil)
+                                }
+                                touch()
+                                keyboardState = false
+                                focusState = true
+                                changeFocusState(false)
+                                withAnimation(springAnimation) {
+                                    typedText = String()
+                                    searchText = String()
+                                }
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                            }
                         }
-                        .padding(20)
-                        .frame(maxWidth: searchState ? .infinity : 500)
-                        .background(Color.gray.opacity(0.2)
-                            .clipShape(RoundedRectangle(cornerRadius: searchState ? 0 : 20))
-                            .ignoresSafeArea(edges: .top))
-                        .keyboardType(.webSearch)
                     }
-                    .transition(.move(edge: .top)
-                        .combined(with: .opacity))
-                    .onTapGesture {
-                        keyboardState = true
-                    }
+                    .padding(20)
+                    .frame(maxWidth: searchState ? .infinity : 500)
+                    .background(Color.gray.opacity(0.2)
+                        .clipShape(RoundedRectangle(cornerRadius: searchState ? 0 : 20))
+                        .ignoresSafeArea(edges: .top))
+                    .keyboardType(.webSearch)
                 }
-        }
+                .transition(.move(edge: .top)
+                    .combined(with: .opacity))
+                .onTapGesture {
+                    keyboardState = true
+                }
+            }
         
         if searchState {
             if searchText.uppercased() == "DEVELOPERS" {
@@ -139,7 +135,7 @@ struct MainView: View {
                     .frame(maxHeight: .infinity)
                     .disabled(true)
             } else {
-                SearchView(selected: $selected, searchText: searchText)
+                SearchView(searchText: searchText)
                     .transition(.move(edge: .bottom)
                         .combined(with: .opacity))
                     .ignoresSafeArea(.keyboard)

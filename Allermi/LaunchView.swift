@@ -15,6 +15,9 @@ struct LaunchView: View {
     @State private var errorOccurred: Bool = false
     @State private var registering: Bool = false
     
+    /// Static Variables
+    private let algorithm: Character = "A"
+    
     /// Local Variables
     private var allergy: [String]? {
         return UserDefaults.standard.array(forKey: "allergy") as? [String]
@@ -104,7 +107,7 @@ struct LaunchView: View {
                     realm.add(csvParse(decodedString))
                 }
                 checkDatabase() { ver in
-                    UserDefaults.standard.set(ver, forKey: "version")
+                    UserDefaults.standard.set("\(ver) \(algorithm)", forKey: "version")
                 }
                 withAnimation(springAnimation) {
                     dataLoadStatus = false
@@ -121,7 +124,7 @@ struct LaunchView: View {
             downloadDatabase()
         } else {
             checkDatabase() { ver in
-                if ver != version {
+                if "\(ver) \(algorithm)" != version {
                     downloadDatabase()
                 }
             }

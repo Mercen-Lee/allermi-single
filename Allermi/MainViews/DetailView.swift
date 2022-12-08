@@ -41,8 +41,6 @@ struct DetailView: View {
             // MARK: - Product Info Cell
             Button(action: {
                 touch()
-                print(selected)
-                print(data.productNumber)
                 withAnimation(springAnimation) {
                     if selected == data.productNumber {
                         selected = -1
@@ -90,13 +88,15 @@ struct DetailView: View {
             // MARK: - Detailed Informations
             if selected == data.productNumber {
                 ForEach([data.companyName, data.ingredients, data.nutrient], id: \.self) { text in
-                    Text(text)
-                        .multilineTextAlignment(.leading)
-                        .font(.caption)
-                        .customContainer()
-                        .zIndex(-1)
-                        .transition(.move(edge: .top)
-                            .combined(with: .opacity))
+                    if !text.isEmpty {
+                        Text(text)
+                            .multilineTextAlignment(.leading)
+                            .font(.caption)
+                            .customContainer()
+                            .zIndex(-1)
+                            .transition(.move(edge: .top)
+                                .combined(with: .opacity))
+                    }
                 }
             }
         }

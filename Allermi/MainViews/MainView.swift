@@ -117,33 +117,34 @@ struct MainView: View {
                     keyboardState = true
                 }
             }
-        
-        if searchState {
-            if searchText.uppercased() == "DEVELOPERS" {
-                VideoPlayer(player: player)
-                    .onAppear {
-                        if player.currentItem == nil {
-                            let item = AVPlayerItem(url: Bundle.main.url(forResource: "Developers",
-                                                                         withExtension: "mp4")!)
-                            player.replaceCurrentItem(with: item)
+            
+            // MARK: - Developers Easter Egg
+            if searchState {
+                if searchText.uppercased() == "DEVELOPERS" {
+                    VideoPlayer(player: player)
+                        .onAppear {
+                            if player.currentItem == nil {
+                                let item = AVPlayerItem(url: Bundle.main.url(forResource: "Developers",
+                                                                             withExtension: "mp4")!)
+                                player.replaceCurrentItem(with: item)
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                player.play()
+                            }
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            player.play()
+                        .scaledToFit()
+                        .frame(maxHeight: .infinity)
+                        .disabled(true)
+                } else {
+                    SearchView(searchText: searchText)
+                        .transition(.move(edge: .bottom)
+                            .combined(with: .opacity))
+                        .ignoresSafeArea(.keyboard)
+                        .onAppear {
+                            if player.currentItem != nil {
+                                player.replaceCurrentItem(with: nil)
+                            }
                         }
-                    }
-                    .scaledToFit()
-                    .frame(maxHeight: .infinity)
-                    .disabled(true)
-            } else {
-                SearchView(searchText: searchText)
-                    .transition(.move(edge: .bottom)
-                        .combined(with: .opacity))
-                    .ignoresSafeArea(.keyboard)
-                    .onAppear {
-                        if player.currentItem != nil {
-                            player.replaceCurrentItem(with: nil)
-                        }
-                    }
                 }
             }
             

@@ -36,8 +36,9 @@ struct DetailView: View {
     }
     
     var body: some View {
-        LazyVStack(spacing: 0) {
-            // MARK: - Data Cell
+        VStack(spacing: 0) {
+            
+            // MARK: - Product Info Cell
             Button(action: {
                 touch()
                 print(selected)
@@ -52,7 +53,7 @@ struct DetailView: View {
             }) {
                 HStack(spacing: 15) {
                     
-                    /// Food Image
+                    // MARK: - Product Image
                     KFImage(URL(string: data.imageURL))
                         .placeholder {
                             Image(systemName: "fork.knife.circle.fill")
@@ -69,11 +70,15 @@ struct DetailView: View {
                         .background(Color(.systemBackground).opacity(0.5))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     
-                    /// Allergy Informations
+                    // MARK: - Product Informations
                     VStack(alignment: .leading, spacing: 0) {
+                        
+                        /// Product Name
                         Text(data.productName)
                             .font(.title2)
                             .fontWeight(.bold)
+                        
+                        /// Allergy Information
                         Text(hasAllergy(Array(data.allergyList)) ?? "알레르기 해당 없음")
                     }
                 }
@@ -81,6 +86,8 @@ struct DetailView: View {
                 .matchedGeometryEffect(id: "\(data.productNumber) container", in: animation)
             }
             .scaleButton()
+            
+            // MARK: - Detailed Informations
             if selected == data.productNumber {
                 ForEach([data.companyName, data.ingredients, data.nutrient], id: \.self) { text in
                     Text(text)

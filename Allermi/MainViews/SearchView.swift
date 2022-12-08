@@ -29,16 +29,24 @@ struct SearchView: View {
             
         } else {
             
-            // MARK: - Data List
-            ScrollView {
-                LazyVStack(spacing: 0) {
-                    ForEach(allergyData, id: \.self) { data in
-                        VStack(spacing: 0) {
+            // MARK: - Product Search List
+            ScrollViewReader { value in
+                ScrollView {
+                    LazyVStack(spacing: 0) {
+                        ForEach(allergyData, id: \.self) { data in
                             DetailView(selected: $selected, data: data)
+                                .id(data.productNumber)
                         }
                     }
+                    .padding(.bottom, 15)
                 }
-                .padding(.bottom, 15)
+                
+                // MARK: - Auto Scrolling Function
+                .onChange(of: selected) { idx in
+                    withAnimation(springAnimation) {
+                        value.scrollTo(idx, anchor: .top)
+                    } 
+                }
             }
             .mask(
                 VStack(spacing: 0) {

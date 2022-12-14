@@ -1,9 +1,5 @@
-//
-//  DetailView.swift
-//  Allermi
-//
-//  Created by Mercen on 2022/12/08.
-//
+/// Detail View
+/// Created by Mercen on 2022/12/08.
 
 import SwiftUI
 import Kingfisher

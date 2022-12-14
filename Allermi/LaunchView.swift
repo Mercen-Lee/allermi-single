@@ -78,7 +78,7 @@ struct LaunchView: View {
                         errorOccurred.toggle()
                         return
                     }
-                    completion(ver)
+                    completion("\(ver) \(algorithm)")
                 case .failure:
                     if version != nil {
                         completion(version!)
@@ -108,7 +108,7 @@ struct LaunchView: View {
                     realm.add(csvParse(decodedString))
                 }
                 checkDatabase() { ver in
-                    UserDefaults.standard.set("\(ver) \(algorithm)", forKey: "version")
+                    UserDefaults.standard.set(ver, forKey: "version")
                 }
                 withAnimation(springAnimation) {
                     dataLoadStatus = false
@@ -125,7 +125,7 @@ struct LaunchView: View {
             downloadDatabase()
         } else {
             checkDatabase() { ver in
-                if "\(ver) \(algorithm)" != version {
+                if ver != version {
                     downloadDatabase()
                 }
             }

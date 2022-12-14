@@ -179,7 +179,10 @@ struct SelectionView: View {
                 // MARK: - Subtitle
                 HStack {
                     Text("보유하고 계신 알레르기를 선택해주세요.")
+                    
+                    /// Information Button
                     Button(action: {
+                        touch()
                         information.toggle()
                     }) {
                         Image(systemName: "info.circle.fill")

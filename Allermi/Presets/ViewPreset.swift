@@ -22,10 +22,53 @@ extension View {
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .padding([.top, .leading, .trailing], 15)
     }
+    
     @ViewBuilder func customModal(_ information: Binding<Bool>) -> some View {
         self
-            .slideOverCard(isPresented: information) {
-                
+            .slideOverCard(isPresented: information,
+                           options: [.hideDismissButton],
+                           style:
+                            SOCStyle(innerPadding: 10,
+                                     outerPadding: { () -> CGFloat in
+                let width = UIScreen.main.bounds.size.width
+                return width >= 500 ? 30 : 10
+            }(),
+                                     style: .grayColor as Color)) {
+                VStack(spacing: 5) {
+                    HStack {
+                        Spacer()
+                        
+                        /// Exit Button
+                        Button(action: {
+                            touch()
+                            SOCManager.dismiss(isPresented: information)
+                        }) {
+                            Image(systemName: "xmark")
+                                .font(Font.title.weight(.medium))
+                                .foregroundColor(.accentColor)
+                        }
+                        .scaleButton()
+                    }
+                    
+                    /// Title and Subtitle
+                    Text("알레르미 도움말")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Text("연한 색은 교차 반응 식품입니다.")
+                    
+                    /// Example Information
+                    HStack {
+                        ForEach(0..<2) { idx in
+                            Text(["알레르기 유발 식품", "교차 반응 식품"][idx])
+                                .foregroundColor(Color(.systemBackground))
+                                .padding([.leading, .trailing], 10)
+                                .frame(height: 30)
+                                .background([.accentColor, .lightColor][idx])
+                                .clipShape(Capsule())
+                        }
+                    }
+                    .padding(.vertical, 30)
+                }
             }
     }
 }

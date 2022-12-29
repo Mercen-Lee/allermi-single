@@ -10,6 +10,7 @@
 		930478AC294162660002DB14 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930478AB294162660002DB14 /* DetailView.swift */; };
 		930478E52941DD640002DB14 /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = 930478E42941DD640002DB14 /* SlideOverCard */; };
 		932730B02929C20E00691DF3 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932730AF2929C20E00691DF3 /* SelectionView.swift */; };
+		9339E88D295D913A008A3F40 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9339E88C295D913A008A3F40 /* LICENSE */; };
 		93725BA32916D8220008BC79 /* AllermiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA22916D8220008BC79 /* AllermiApp.swift */; };
 		93725BA52916D8220008BC79 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93725BA42916D8220008BC79 /* MainView.swift */; };
 		93725BA72916D8230008BC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93725BA62916D8230008BC79 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		930478AB294162660002DB14 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		932730AF2929C20E00691DF3 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		9339E88C295D913A008A3F40 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		93725B9F2916D8220008BC79 /* Allermi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Allermi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93725BA22916D8220008BC79 /* AllermiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllermiApp.swift; sourceTree = "<group>"; };
 		93725BA42916D8220008BC79 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		93725B962916D8220008BC79 = {
 			isa = PBXGroup;
 			children = (
+				9339E88C295D913A008A3F40 /* LICENSE */,
 				93F03A13292C630D00B16803 /* Settings.bundle */,
 				938501E52928059E00BDF157 /* README.md */,
 				93C0CE3F292C68640031BD76 /* Developers.mp4 */,
@@ -214,6 +217,7 @@
 			files = (
 				93F03A14292C630D00B16803 /* Settings.bundle in Resources */,
 				93C0CE40292C698A0031BD76 /* Developers.mp4 in Resources */,
+				9339E88D295D913A008A3F40 /* LICENSE in Resources */,
 				93725BA72916D8230008BC79 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,7 +365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 20221215;
 				DEVELOPMENT_ASSET_PATHS = "\"Allermi/Preview Content\"";
 				DEVELOPMENT_TEAM = 56V747V83R;
 				ENABLE_PREVIEWS = YES;
@@ -393,7 +397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 20221215;
 				DEVELOPMENT_ASSET_PATHS = "\"Allermi/Preview Content\"";
 				DEVELOPMENT_TEAM = 56V747V83R;
 				ENABLE_PREVIEWS = YES;

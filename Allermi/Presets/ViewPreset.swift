@@ -33,7 +33,7 @@ extension View {
                 let width = UIScreen.main.bounds.size.width
                 return width >= 500 ? 30 : 10
             }(),
-                                     style: .grayColor as Color)) {
+                                     style: .halfGrayColor as Color)) {
                 VStack(spacing: 5) {
                     HStack {
                         Spacer()
@@ -88,6 +88,7 @@ extension AnyTransition {
 extension Color {
     static let lightColor = Color("LightColor")
     static let grayColor = Color("GrayColor")
+    static let halfGrayColor = Color("HalfGrayColor")
 }
 
 // MARK: - Button Style

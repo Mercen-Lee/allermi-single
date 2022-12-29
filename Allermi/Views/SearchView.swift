@@ -50,7 +50,7 @@ struct SearchView: View {
             }
             .mask(
                 VStack(spacing: 0) {
-                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.6), .black]),
+                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.3), .black]),
                                    startPoint: .top,
                                    endPoint: .bottom
                     )
